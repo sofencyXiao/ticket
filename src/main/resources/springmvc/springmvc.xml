@@ -1,0 +1,81 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+        <!-- 扫描handler  扫描所有的controller的方式 -->
+        <context:component-scan base-package="com.sofency.ticket.controller"></context:component-scan>
+       	
+       	<!-- 静态资源解析 -->
+     <!--   	<mvc:resources location="/img/" mapping="/img/**"></mvc:resources>
+       	<mvc:resources location="/js/" mapping="/ja/**"></mvc:resources> -->
+
+       <!-- 全局异常类 -->
+<!--       	<bean class="com.sofency.ssm.exception.CustomExceptionResolver"/>-->
+       	<mvc:annotation-driven>
+			<mvc:message-converters>
+				<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+					<property name="objectMapper">
+						<bean class="com.fasterxml.jackson.databind.ObjectMapper">
+							<property name="dateFormat">
+								<bean class="java.text.SimpleDateFormat">
+									<constructor-arg type="java.lang.String" value="yyyy-MM-dd" />
+								</bean>
+							</property>
+						</bean>
+					</property>
+				</bean>
+			</mvc:message-converters>
+		</mvc:annotation-driven>
+
+        
+        <!-- 如果不使用上面的注解驱动的话需要在注解适配取中写上下面的内容-->
+<!--        <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">-->
+<!--       			<property name="messageConverters">-->
+<!--       				<list>-->
+<!--       					<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>-->
+<!--       				</list>-->
+<!--       			</property>-->
+<!--       		</bean>-->
+
+        <!-- 视图解析器     解析jsp 默认使用jstl标签  classpath下需要有jstl的包 -->
+        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        	<!-- 配置视图解析器的前缀和后缀 -->
+        	<property name="prefix" value="/"></property>
+        	<property name="suffix" value=".jsp"></property>
+        </bean>
+        
+        <bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">    
+	        <!-- set the max upload size100MB -->    
+	        <property name="maxUploadSize">    
+	            <value>104857600</value>    
+	        </property>    
+	        <property name="maxInMemorySize">    
+	            <value>4096</value>    
+	        </property>   
+	        <property name="defaultEncoding">  
+	            <value>utf-8</value>  
+	        </property>  
+	    </bean>
+        
+<!--         &lt;!&ndash;拦截器的配置&ndash;&gt;-->
+        <mvc:interceptors>
+        	<mvc:interceptor>
+        		<!-- 拦截管理员端下的页面   是拦截action的-->
+				<mvc:mapping path="/back/**"/>
+        		<!-- 不拦截网站显示的页面 -->
+				<!--拦截的类-->
+				<bean class="com.sofency.ticket.interceptor.loginInterceptor"/>
+        	</mvc:interceptor>
+        </mvc:interceptors>
+        <!-- 设置默认的静态资源处理方式 -->
+        <mvc:default-servlet-handler/>
+</beans>
