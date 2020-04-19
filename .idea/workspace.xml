@@ -1,8 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Ticket:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="10d8fed2-1f81-4e57-be91-7362c14e22f8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/StudentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/AuthorizeCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/ResultMsg.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/SessionCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/CommunityService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/utils/SessionCodeUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/ActorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/ActorMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/CommunityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/CommunityMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/GrabTicketMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/GrabTicketMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/StudentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/StudentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/TicketMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/TicketMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/VoteTicketMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/VoteTicketMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/Actor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/ActorExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/ActorExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/ActorKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/ActorKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/Community.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/Community.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/CommunityExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/CommunityExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/GrabTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/GrabTicket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/GrabTicketExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/GrabTicketExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/GrabTicketKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/GrabTicketKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/StudentExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/StudentExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/TicketExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/TicketExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/TicketKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/TicketKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/VoteTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/VoteTicket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/VoteTicketExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/VoteTicketExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/VoteTicketKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/VoteTicketKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ActorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ActorMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/CommunityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CommunityMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/GrabTicketMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/GrabTicketMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/StudentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/StudentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/TicketMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/TicketMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/VoteTicketMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/VoteTicketMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-service.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/springmvc/springmvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/springmvc/springmvc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +86,41 @@
         <item name="ticket: schema" type="76f4a085:MysqlImplModel$Schema" />
         <item name="actor: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="ticket@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="ticket: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="community: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="ticket@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="ticket: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="grabticket: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="ticket@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="ticket: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="student: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="ticket@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="ticket: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="ticket: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="ticket@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="ticket: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="voteticket: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -55,6 +133,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -71,20 +156,23 @@
     </option>
   </component>
   <component name="ProjectId" id="1ab52EsPY9haTZMhGmO3W8VDaDS" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
     <option name="compactDirectories" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
-    <option name="showVisibilityIcons" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/mapper/com/sofency/ticket/mapper" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -92,16 +180,120 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Java\Ticket\Ticket\src\main\java\com\sofency\ticket\mapper" />
-      <recent name="E:\Java\Ticket\Ticket\src\main\resources\mapper1" />
       <recent name="E:\Java\Ticket\Ticket\src\main\resources\mapper" />
+      <recent name="E:\Java\Ticket\Ticket\src\main\resources\mapperw" />
+      <recent name="E:\Java\Ticket\Ticket\src\main\java\com\sofency\ticket\mapper" />
+      <recent name="E:\Java\Ticket\Ticket\src\main\resources\mapper\com\sofency\ticket\mapper\demo" />
+      <recent name="E:\Java\Ticket\Ticket\src\main\resources\mapper1" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.sofency.ticket.config" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Java\Ticket\Ticket\src\main\resources\mapper\com\sofency\ticket\mapper" />
       <recent name="E:\Java\Ticket\Ticket\src\main\resources" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 8.5.50" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.50" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8089/ticket" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <deployment>
+        <artifact name="Ticket:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/ticket" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_Ticket" />
+        <option name="HTTP_PORT" value="8089" />
+        <option name="JNDI_PORT" value="1098" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="53061" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Ticket:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <option name="contentProportion" value="0.09090909" />
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -113,41 +305,118 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1586991243489</updated>
-      <workItem from="1586991246209" duration="5699000" />
+      <workItem from="1586991246209" duration="7755000" />
+      <workItem from="1587218079449" duration="8125000" />
+      <workItem from="1587256687377" duration="496000" />
+      <workItem from="1587257603826" duration="746000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="313" y="119" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586997270969">
+    <state x="122" y="107" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587257078955">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state x="313" y="119" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1586997270969" />
+    <state x="122" y="107" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587257078955" />
     <state x="534" y="189" key="#com.intellij.ide.util.MemberChooser" timestamp="1586999333149">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="534" y="189" key="#com.intellij.ide.util.MemberChooser/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1586999333149" />
-    <state width="1382" height="242" key="GridCell.Tab.0.bottom" timestamp="1586998654828">
+    <state x="505" y="345" width="431" height="239" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587254338404">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1382" height="242" key="GridCell.Tab.0.bottom/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1586998654828" />
-    <state width="1382" height="242" key="GridCell.Tab.0.center" timestamp="1586998654828">
+    <state x="505" y="345" width="431" height="239" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587254338404" />
+    <state width="1148" height="238" key="GridCell.Tab.0.bottom" timestamp="1587258255821">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1382" height="242" key="GridCell.Tab.0.center/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1586998654828" />
-    <state width="1382" height="242" key="GridCell.Tab.0.left" timestamp="1586998654828">
+    <state width="1161" height="456" key="GridCell.Tab.0.bottom/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587257088538" />
+    <state width="1148" height="238" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1587258255821" />
+    <state width="1148" height="238" key="GridCell.Tab.0.center" timestamp="1587258255821">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1382" height="242" key="GridCell.Tab.0.left/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1586998654828" />
-    <state width="1382" height="242" key="GridCell.Tab.0.right" timestamp="1586998654828">
+    <state width="1161" height="456" key="GridCell.Tab.0.center/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587257088538" />
+    <state width="1148" height="238" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1587258255821" />
+    <state width="1148" height="238" key="GridCell.Tab.0.left" timestamp="1587258255821">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1382" height="242" key="GridCell.Tab.0.right/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1586998654828" />
+    <state width="1161" height="456" key="GridCell.Tab.0.left/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587257088538" />
+    <state width="1148" height="238" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1587258255821" />
+    <state width="1148" height="238" key="GridCell.Tab.0.right" timestamp="1587258255821">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state width="1161" height="456" key="GridCell.Tab.0.right/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587257088538" />
+    <state width="1148" height="238" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1587258255821" />
+    <state width="1148" height="238" key="GridCell.Tab.1.bottom" timestamp="1587258255750">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state width="1161" height="456" key="GridCell.Tab.1.bottom/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587257089262" />
+    <state width="1148" height="238" key="GridCell.Tab.1.bottom/0.0.1440.920@0.0.1440.920" timestamp="1587258255750" />
+    <state width="1148" height="238" key="GridCell.Tab.1.center" timestamp="1587258255750">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state width="1161" height="456" key="GridCell.Tab.1.center/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587257089261" />
+    <state width="1148" height="238" key="GridCell.Tab.1.center/0.0.1440.920@0.0.1440.920" timestamp="1587258255750" />
+    <state width="1148" height="238" key="GridCell.Tab.1.left" timestamp="1587258255750">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state width="1161" height="456" key="GridCell.Tab.1.left/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587257089261" />
+    <state width="1148" height="238" key="GridCell.Tab.1.left/0.0.1440.920@0.0.1440.920" timestamp="1587258255750" />
+    <state width="1148" height="238" key="GridCell.Tab.1.right" timestamp="1587258255750">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state width="1161" height="456" key="GridCell.Tab.1.right/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587257089262" />
+    <state width="1148" height="238" key="GridCell.Tab.1.right/0.0.1440.920@0.0.1440.920" timestamp="1587258255750" />
+    <state width="1148" height="238" key="GridCell.Tab.2.bottom" timestamp="1587258255750">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state width="1161" height="456" key="GridCell.Tab.2.bottom/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587257084344" />
+    <state width="1148" height="238" key="GridCell.Tab.2.bottom/0.0.1440.920@0.0.1440.920" timestamp="1587258255750" />
+    <state width="1148" height="238" key="GridCell.Tab.2.center" timestamp="1587258255750">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state width="1161" height="456" key="GridCell.Tab.2.center/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587257084344" />
+    <state width="1148" height="238" key="GridCell.Tab.2.center/0.0.1440.920@0.0.1440.920" timestamp="1587258255750" />
+    <state width="1148" height="238" key="GridCell.Tab.2.left" timestamp="1587258255750">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state width="1161" height="456" key="GridCell.Tab.2.left/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587257084343" />
+    <state width="1148" height="238" key="GridCell.Tab.2.left/0.0.1440.920@0.0.1440.920" timestamp="1587258255750" />
+    <state width="1148" height="238" key="GridCell.Tab.2.right" timestamp="1587258255750">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state width="1161" height="456" key="GridCell.Tab.2.right/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587257084344" />
+    <state width="1148" height="238" key="GridCell.Tab.2.right/0.0.1440.920@0.0.1440.920" timestamp="1587258255750" />
     <state x="259" y="134" key="Maven.ArtifactSearchDialog" timestamp="1586999633265">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="259" y="134" key="Maven.ArtifactSearchDialog/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1586999633265" />
+    <state x="333" y="243" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1587254994545">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state x="333" y="243" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587254994545" />
+    <state x="2971" y="39" width="786" height="900" key="find.popup" timestamp="1587002755128">
+      <screen x="2160" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2971" y="39" width="786" height="900" key="find.popup/0.0.1440.920/2160.0.1920.1040@2160.0.1920.1040" timestamp="1587002755128" />
+    <state x="383" y="195" width="672" height="678" key="search.everywhere.popup" timestamp="1587254389707">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state x="383" y="195" width="672" height="678" key="search.everywhere.popup/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587254389707" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/RegisterController.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
