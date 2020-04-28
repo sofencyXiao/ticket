@@ -26,6 +26,6 @@
         
         <!-- aop编程 -->
         <aop:config>
-        	<aop:advisor advice-ref="txAdvice" pointcut="execution(* com.sofency.ssm.service.impl.*.*(..) )"/>
+        	<aop:advisor advice-ref="txAdvice" pointcut="execution(* com.sofency.ticket.service.*.*(..) )"/>
         </aop:config>
 </beans>

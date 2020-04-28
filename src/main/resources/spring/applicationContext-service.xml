@@ -9,7 +9,11 @@
         
         <!-- 配置service接口 -->
 	<bean id="communityService" class="com.sofency.ticket.service.CommunityService"></bean>
-<!--	<bean id="loginService" class="com.sofency.ticket.service.impl.LoginServiceImpl"/>-->
+	<bean id="grabTicketService" class="com.sofency.ticket.service.GrabTicketService"></bean>
+	<bean id="voteTicketService" class="com.sofency.ticket.service.VoteTicketService"></bean>
+	<bean id="ticketService" class="com.sofency.ticket.service.TicketService"></bean>
+	<bean id="studentService" class="com.sofency.ticket.service.StudentService"></bean>
+	<!--	<bean id="loginService" class="com.sofency.ticket.service.impl.LoginServiceImpl"/>-->
 <!--	<bean id="instituteMajorService" class="com.sofency.ssm.service.impl.InstituteMajorServiceImpl"/>-->
 <!--	<bean id="fameService" class="com.sofency.ssm.service.impl.FameServiceImpl"/>-->
 <!--	<bean id="engineerService" class="com.sofency.ssm.service.impl.EngineerServiceImpl"/>-->

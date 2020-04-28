@@ -1,10 +1,21 @@
 package com.sofency.ticket.controller;
 
-import com.sofency.ticket.pojo.Actor;
+import com.sofency.ticket.dto.ResultMsg;
+import com.sofency.ticket.dto.StudentDTO;
+import com.sofency.ticket.pojo.Community;
+import com.sofency.ticket.pojo.GrabTicket;
+import com.sofency.ticket.pojo.Student;
+import com.sofency.ticket.service.CommunityService;
+import com.sofency.ticket.service.GrabTicketService;
+import com.sofency.ticket.service.StudentService;
+import com.sofency.ticket.service.TicketService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author sofency
@@ -12,10 +23,47 @@ import org.springframework.web.bind.annotation.RestController;
  * @package IntelliJ IDEA
  * @description  主要获取用户的openId
  */
-//@RestController
 @ResponseBody  //表明返回值就是json
 @Controller  //表明控制类
 public class StudentController {
+    StudentService studentService;
+    TicketService ticketService;
+    CommunityService communityService;
+    GrabTicketService grabTicketService;
+    @Autowired
+    public StudentController(StudentService studentService, TicketService ticketService,
+                             CommunityService communityService,
+                             GrabTicketService grabTicketService) {
+        this.studentService = studentService;
+        this.ticketService = ticketService;
+        this.communityService= communityService;
+        this.grabTicketService = grabTicketService;
+    }
 
+    //加载用户的信息
+    @RequestMapping("/getInfo")
+    public List<StudentDTO> getInfo(String openId){
+        //首先根据OpenId获取用户的信息
+        Student student = studentService.getInfoByOpenId(openId);
+        String studentId = student.getStudentId();
+        String name = student.getName();
+        //根据用户的信息操作获取抢到的票的信息
+        List<Integer> grabIds = ticketService.getGrabId(studentId);
+        List<StudentDTO> list = new ArrayList<>();
 
+        for(Integer grabId:grabIds){
+            GrabTicket grabTicket = grabTicketService.selectByPrimaryKey(grabId);
+            StudentDTO studentDTO = new StudentDTO();
+            studentDTO.setGrabId(grabId);
+            studentDTO.setStudentId(studentId);
+            studentDTO.setActivityName(grabTicket.getActivityName());
+            studentDTO.setEndTime(grabTicket.getEndTime());
+            studentDTO.setName(name);
+            //获取主办方的名字
+            Community community = communityService.getCommunityById(grabTicket.getCommunityId());
+            studentDTO.setActivityName(community.getCommunityName());
+            list.add(studentDTO);
+        }
+        return list;
+    }
 }

@@ -45,9 +45,6 @@ public class SessionCodeUtils {
             String session_key = (String) jsonObject.get("session_key");
             //直接将openId先存储到数据库
 
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("出现异常");
