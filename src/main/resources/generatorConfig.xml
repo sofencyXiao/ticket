@@ -30,7 +30,7 @@
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
-        <javaClientGenerator type="XMLMAPPER" targetPackage="mapper"  targetProject="src\main\resources\mapper">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="mapper"  targetProject="src\main\resources">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 

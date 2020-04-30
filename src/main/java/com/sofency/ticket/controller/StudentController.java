@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,18 +35,22 @@ public class StudentController {
     public StudentController(StudentService studentService, TicketService ticketService,
                              CommunityService communityService,
                              GrabTicketService grabTicketService) {
+
         this.studentService = studentService;
         this.ticketService = ticketService;
         this.communityService= communityService;
         this.grabTicketService = grabTicketService;
     }
 
-    //加载用户的信息
+    //加载用户的信息 如果没有用户的信息 提醒用户进行注册信息
     @RequestMapping("/getInfo")
-    public List<StudentDTO> getInfo(String openId){
+    public List<StudentDTO> getInfo(String openId, HttpSession session){
         //首先根据OpenId获取用户的信息
         Student student = studentService.getInfoByOpenId(openId);
         String studentId = student.getStudentId();
+        //存储到会话中
+        session.setAttribute("studentId",studentId);
+
         String name = student.getName();
         //根据用户的信息操作获取抢到的票的信息
         List<Integer> grabIds = ticketService.getGrabId(studentId);
@@ -57,7 +62,7 @@ public class StudentController {
             studentDTO.setGrabId(grabId);
             studentDTO.setStudentId(studentId);
             studentDTO.setActivityName(grabTicket.getActivityName());
-            studentDTO.setEndTime(grabTicket.getEndTime());
+            studentDTO.setEndTime(grabTicket.getActivityStartTime());
             studentDTO.setName(name);
             //获取主办方的名字
             Community community = communityService.getCommunityById(grabTicket.getCommunityId());
@@ -66,4 +71,14 @@ public class StudentController {
         }
         return list;
     }
+
+    //学生的注册
+    @RequestMapping("/registerStudent")
+    public ResultMsg registerStudent(Student student){
+        return null;
+    }
+
+
+
+
 }

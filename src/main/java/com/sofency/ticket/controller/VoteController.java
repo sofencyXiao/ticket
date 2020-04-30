@@ -1,12 +1,13 @@
 package com.sofency.ticket.controller;
 
-import com.sofency.ticket.dto.BackTicketDTO;
-import com.sofency.ticket.dto.ResultMsg;
-import com.sofency.ticket.dto.VoteActivity;
+import com.sofency.ticket.dto.*;
+import com.sofency.ticket.pojo.Actor;
 import com.sofency.ticket.service.VoteTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 
 /**
@@ -29,4 +30,39 @@ public class VoteController {
         ResultMsg resultMsg = voteTicketService.voteTicket(voteActivity);
         return resultMsg;
     }
+
+
+    //获取所有的投票的活动
+    @RequestMapping("/getAllVoteActivity")
+    public List<GetVoteActivityDTO>  getVoteActivityDTOS(){
+        return null;
+    }
+
+    //根据活动的id活动所有参与活动的成员
+    @RequestMapping("/getVoteById")
+    public List<VoteInfoDTO> getVoteById(int activityId){
+        return null;
+    }
+
+
+    //开始投票
+    @RequestMapping("/vote")
+    public ResultMsg voteToStudentID(VoteActivityByIdDTO voteActivityByIdDTO){
+        return null;
+    }
+
+    //投票中间的信息
+
+
+
+    //投票结束的信息
+    //统计所有参赛人员的票数
+    @RequestMapping("/voteEnd")
+    public List<IsVotingDTO> voteEnd(IdAndCommunityId ddAndCommunityId){
+        return null;
+    }
+
+
+
+
 }

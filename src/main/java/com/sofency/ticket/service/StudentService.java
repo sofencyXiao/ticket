@@ -1,5 +1,6 @@
 package com.sofency.ticket.service;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.sofency.ticket.dto.ResultMsg;
 import com.sofency.ticket.enums.Code;
@@ -33,7 +34,8 @@ public class StudentService {
 
     //根据openId获取用户的信息
     public Student getInfoByOpenId(String openId){
-        Student student = (Student) redisTemplate.opsForValue().get("student::" + openId);
+        Student student = JSON.parseObject(String.valueOf(redisTemplate.opsForValue().get("student::" + openId)),
+                Student.class);
         if(student!=null){
             return student;
         }else{

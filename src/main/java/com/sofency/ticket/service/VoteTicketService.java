@@ -1,15 +1,13 @@
 package com.sofency.ticket.service;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.sofency.ticket.dto.GetVoteActivityDTO;
-import com.sofency.ticket.dto.ResultMsg;
-import com.sofency.ticket.dto.VoteActivity;
+import com.sofency.ticket.dto.*;
 import com.sofency.ticket.enums.Code;
 import com.sofency.ticket.mapper.ActorMapper;
-import com.sofency.ticket.mapper.StudentMapper;
 import com.sofency.ticket.mapper.VoteTicketMapper;
 import com.sofency.ticket.pojo.Actor;
-import com.sofency.ticket.pojo.Student;
+import com.sofency.ticket.pojo.ActorExample;
 import com.sofency.ticket.pojo.VoteTicket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -17,8 +15,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author sofency
@@ -79,7 +78,40 @@ public class VoteTicketService {
 
     //获取可以投票的活动  对于查询类的数据放到缓存中
     public List<GetVoteActivityDTO> getVoteActivityDTOS(){
-        return null;
+        Set<String> keys = redisTemplate.keys("voteTicket::*");
+        List<GetVoteActivityDTO> list = new ArrayList<>();
+        for(String  key:keys){
+            VoteTicket voteTicket = JSON.parseObject(String.valueOf(redisTemplate.opsForValue().get(key)),VoteTicket.class);
+            GetVoteActivityDTO getVoteActivityDTO = new GetVoteActivityDTO();
+            getVoteActivityDTO.setActivityId(voteTicket.getActivityId());
+            getVoteActivityDTO.setActivityName(voteTicket.getActivityName());
+            getVoteActivityDTO.setEndTime(voteTicket.getEndTime());
+            list.add(getVoteActivityDTO);
+        }
+        return list;
     }
 
+    //根据活动的编号获取所要投票的情况
+    public VoteInfoDTO getVoteInfo(int activityId){
+        VoteTicket voteTicket = JSON.parseObject(String.valueOf(redisTemplate.opsForValue().get("voteTicket::"+activityId)),
+                VoteTicket.class);
+        VoteInfoDTO voteInfoDTO = new VoteInfoDTO();
+        voteInfoDTO.setEndTime(voteTicket.getEndTime());//设置过期的时间
+
+        ActorExample example = new ActorExample();
+        example.createCriteria().andActivityIdEqualTo(activityId);
+
+        List<Actor> actors = actorMapper.selectByExample(example);
+        List<ActorInfo> list = new ArrayList<>();
+        AtomicInteger cnt= new AtomicInteger();
+        actors.stream().forEach(actor -> {
+            ActorInfo actorInfo = new ActorInfo();
+            actorInfo.setId(cnt.getAndIncrement());
+            actorInfo.setName(actor.getName());
+            actorInfo.setTickets(actor.getGetVoted());
+            list.add(actorInfo);
+        });
+        voteInfoDTO.setActorInfoList(list);
+        return voteInfoDTO;
+    }
 }

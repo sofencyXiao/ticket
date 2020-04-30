@@ -7,34 +7,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10d8fed2-1f81-4e57-be91-7362c14e22f8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/CommunityController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/BackTicketDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/GetGrabActivityDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/GetVoteActivityDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/StudentDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/VoteActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/enums/Code.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/GrabTicketService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/StudentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/TicketService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/VoteTicketService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/ActivityInfoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/ActorInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/GrabDetailDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/GrabInfoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/IdAndCommunityId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/IsVotingDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/VoteActivityByIdDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/VoteInfoDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/config/RedisConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/CommunityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/CommunityController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/GrabTicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/GrabTicketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/RegisterController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/StudentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/VoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/VoteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/GetGrabActivityDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/GetGrabActivityDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/GetVoteActivityDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/GetVoteActivityDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/ActorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/ActorMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/GrabTicketMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/GrabTicketMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/Actor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/ActorExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/ActorExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/GrabTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/GrabTicket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/GrabTicketExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/GrabTicketExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/GrabTicketKey.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/CommunityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/CommunityService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/utils/SessionCodeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/utils/SessionCodeUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/GrabTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/GrabTicketService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/StudentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/VoteTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/VoteTicketService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/GrabTicketMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/GrabTicketMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/StudentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/StudentMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/VoteTicketMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/VoteTicketMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-service.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-transaction.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-transaction.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,21 +167,21 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Java\Ticket\Ticket\src\main\java\com\sofency\ticket\mapper" />
       <recent name="E:\Java\Ticket\Ticket\src\main\resources\mapper" />
-      <recent name="E:\Java\Ticket\Ticket\src\main\resources\mapper\com\sofency\ticket\mapper" />
-      <recent name="E:\Java\Ticket\Ticket\src\main\resources" />
+      <recent name="E:\Java\Ticket\Ticket\src\main\resources\mapperw" />
+      <recent name="E:\Java\Ticket\Ticket\src\main\resources\mapper\com\sofency\ticket\mapper\demo" />
+      <recent name="E:\Java\Ticket\Ticket\src\main\resources\mapper1" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.sofency.ticket.config" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Java\Ticket\Ticket\src\main\resources\mapper" />
-      <recent name="E:\Java\Ticket\Ticket\src\main\resources\mapperw" />
       <recent name="E:\Java\Ticket\Ticket\src\main\java\com\sofency\ticket\mapper" />
-      <recent name="E:\Java\Ticket\Ticket\src\main\resources\mapper\com\sofency\ticket\mapper\demo" />
-      <recent name="E:\Java\Ticket\Ticket\src\main\resources\mapper1" />
+      <recent name="E:\Java\Ticket\Ticket\src\main\resources\mapper\com\sofency\ticket\mapper" />
+      <recent name="E:\Java\Ticket\Ticket\src\main\resources" />
     </key>
   </component>
   <component name="RunManager">
@@ -276,8 +275,12 @@
               </path>
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="root:ticket@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:ticket@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@28ad1af6" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
             </expand>
             <select />
@@ -302,7 +305,8 @@
       <workItem from="1587257603826" duration="4106000" />
       <workItem from="1587340645816" duration="1934000" />
       <workItem from="1587537691469" duration="600000" />
-      <workItem from="1587988389882" duration="23318000" />
+      <workItem from="1587988389882" duration="31481000" />
+      <workItem from="1588145016608" duration="17288000" />
     </task>
     <servers />
   </component>
@@ -329,29 +333,29 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="451" y="207" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1588002608949" />
-    <state x="501" y="216" key="FileChooserDialogImpl" timestamp="1588036998665">
+    <state x="501" y="216" key="FileChooserDialogImpl" timestamp="1588214473496">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state x="501" y="216" key="FileChooserDialogImpl/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1588036998665" />
-    <state width="1229" height="238" key="GridCell.Tab.0.bottom" timestamp="1587259009063">
+    <state x="501" y="216" key="FileChooserDialogImpl/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1588214473496" />
+    <state width="607" height="240" key="GridCell.Tab.0.bottom" timestamp="1588157192312">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1161" height="456" key="GridCell.Tab.0.bottom/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587257088538" />
+    <state width="607" height="240" key="GridCell.Tab.0.bottom/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1588157192312" />
     <state width="1229" height="238" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1587259009063" />
-    <state width="1229" height="238" key="GridCell.Tab.0.center" timestamp="1587259009063">
+    <state width="607" height="240" key="GridCell.Tab.0.center" timestamp="1588157192312">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1161" height="456" key="GridCell.Tab.0.center/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587257088538" />
+    <state width="607" height="240" key="GridCell.Tab.0.center/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1588157192312" />
     <state width="1229" height="238" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1587259009063" />
-    <state width="1229" height="238" key="GridCell.Tab.0.left" timestamp="1587259009063">
+    <state width="607" height="240" key="GridCell.Tab.0.left" timestamp="1588157192312">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1161" height="456" key="GridCell.Tab.0.left/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587257088538" />
+    <state width="607" height="240" key="GridCell.Tab.0.left/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1588157192312" />
     <state width="1229" height="238" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1587259009063" />
-    <state width="1229" height="238" key="GridCell.Tab.0.right" timestamp="1587259009063">
+    <state width="607" height="240" key="GridCell.Tab.0.right" timestamp="1588157192312">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1161" height="456" key="GridCell.Tab.0.right/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587257088538" />
+    <state width="607" height="240" key="GridCell.Tab.0.right/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1588157192312" />
     <state width="1229" height="238" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1587259009063" />
     <state width="1229" height="238" key="GridCell.Tab.1.bottom" timestamp="1587259009063">
       <screen x="0" y="0" width="1440" height="920" />
@@ -401,10 +405,10 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="222" y="103" key="SettingsEditor/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587997939960" />
-    <state x="333" y="243" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1588039044936">
+    <state x="333" y="243" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1588160592899">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state x="333" y="243" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1588039044936" />
+    <state x="333" y="243" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1588160592899" />
     <state x="2971" y="39" width="786" height="900" key="find.popup" timestamp="1587002755128">
       <screen x="2160" y="0" width="1920" height="1040" />
     </state>

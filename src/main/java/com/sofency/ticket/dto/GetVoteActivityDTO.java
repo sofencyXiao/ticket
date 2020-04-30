@@ -14,5 +14,5 @@ import java.util.Date;
 public class GetVoteActivityDTO {
     private int activityId;
     private String activityName;
-    private Date endTime;
+    private String activityImgUrl;
 }

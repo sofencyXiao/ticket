@@ -12,4 +12,5 @@ import lombok.Data;
 public class GetGrabActivityDTO {
     private int grabId;
     private String activityName;
+    private String grabActivityImgUrl;
 }

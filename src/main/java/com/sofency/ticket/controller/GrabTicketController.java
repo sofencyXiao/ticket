@@ -1,11 +1,13 @@
 package com.sofency.ticket.controller;
-import com.sofency.ticket.dto.BackTicketDTO;
-import com.sofency.ticket.dto.ResultMsg;
+import com.sofency.ticket.dto.*;
 import com.sofency.ticket.pojo.GrabTicket;
 import com.sofency.ticket.service.GrabTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * @author sofency
@@ -44,4 +46,34 @@ public class GrabTicketController {
         ResultMsg resultMsg = grabTicketService.backTicket(studentId, grabId);
         return resultMsg;
     }
+
+    //根据抢票活动的id查询活动的详情
+    @RequestMapping("/getInfoById")
+    public GrabInfoDTO getDetailInfo(int grabId, HttpSession session){
+        String studentId = (String) session.getAttribute("studentId");//查询学生的信息 并返回结果
+        return null;
+    }
+
+
+    //获取所有的抢票活动
+    @RequestMapping("/getAllGrabActivity")
+    public List<GetGrabActivityDTO>  getGrabActivityDTOS(String openId){
+        return null;
+    }
+
+    //开始抢票
+    @RequestMapping("/startGrabTicket")
+    public ResultMsg startGrabTicket(int  grabId){
+        return  null;
+    }
+
+
+    //根据抢票的ID和组织号 community  管理员端获取活动的信息
+    @RequestMapping("/grabDetailById")
+
+
+    public GrabDetailDTO grabDetailDTO(IdAndCommunityId grabIdAndCommunityId){
+        return null;
+    }
+
 }

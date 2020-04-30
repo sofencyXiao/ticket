@@ -1,5 +1,6 @@
 package com.sofency.ticket.service;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.sofency.ticket.dto.ResultMsg;
 import com.sofency.ticket.enums.Code;
@@ -52,7 +53,6 @@ public class CommunityService {
         return resultMsg;
     }
 
-
     //注册社团
     public ResultMsg registerOrChange(Community community){
         String communityAccount = community.getCommunityAccount();
@@ -71,9 +71,9 @@ public class CommunityService {
                 resultMsg.setCommunityAccount(account);
                 String jsonCommunity = JSONObject.toJSONString(community);
                 //缓存处理
-                redisTemplate.opsForValue().set("community::"+community.getCommunityAccount(),jsonCommunity);
+                redisTemplate.opsForValue().set("community::"+result,jsonCommunity);
             }
-        }else{//说明是修改
+        }else{//说明是修改 修改的时候填上id
             //构建搜索条件
             CommunityExample example = new CommunityExample();
             example.createCriteria().andCommunityAccountEqualTo(communityAccount);
@@ -81,7 +81,7 @@ public class CommunityService {
             int i = communityMapper.updateByExampleSelective(community, example);
 
             if(i>0){//说明修改成功
-                redisTemplate.opsForValue().set("community::"+communityAccount,community);
+                redisTemplate.opsForValue().set("community::"+community.getCommunityId(),community);
                 resultMsg.setMsg(Code.CHANGE_SUCCESS.getMessage());
                 resultMsg.setStatus(Code.CHANGE_SUCCESS.getCode());
             }else{//说明修改失败
@@ -92,15 +92,15 @@ public class CommunityService {
         return resultMsg;
     }
 
-    //根据社团ID找到在注册的社团中
-    public Community getCommunityById(String communityAccount){
-        Community community = (Community) redisTemplate.opsForValue().get("community::" + communityAccount);
+    //根据社团账户找到在注册的社团中
+    public Community getCommunityById(int communityId){
+        Community community = JSON.parseObject(String.valueOf(redisTemplate.opsForValue().get("community::" + communityId)),
+                Community.class);
+
         if(community==null){
-            CommunityExample example = new CommunityExample();
-            example.createCriteria().andCommunityAccountEqualTo(communityAccount);
-            List<Community> communities = communityMapper.selectByExample(example);
-            if(communities!=null&&communities.size()!=0){
-                return communities.get(0);
+            Community communities = communityMapper.selectByPrimaryKey(communityId);
+            if(communities!=null){
+                return communities;
             }
         }
         return community;

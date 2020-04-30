@@ -1,5 +1,6 @@
 package com.sofency.ticket.service;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.sofency.ticket.dto.BackTicketDTO;
 import com.sofency.ticket.dto.GetGrabActivityDTO;
@@ -65,7 +66,11 @@ public class GrabTicketService {
     //根据抢票的id获取抢票的信息
     public GrabTicket selectByPrimaryKey(int grabId){
         //从缓存中获取
-        GrabTicket grabTicket = (GrabTicket)redisTemplate.opsForValue().get("grabTicket::" + grabId);
+        GrabTicket grabTicket = JSON.parseObject(String.valueOf(redisTemplate.opsForValue().get("grabTicket::" + grabId)),GrabTicket.class);
+        if(grabTicket==null){
+            GrabTicket grabTicket1 = grabTicketMapper.selectByPrimaryKey(grabId);
+            return grabTicket1;
+        }
         return grabTicket;
     }
 
@@ -80,6 +85,7 @@ public class GrabTicketService {
 
         //并且将剩余的票数加一处理;
         redisTemplate.opsForValue().increment("grabTickets::"+grabId,1);
+        //定时任务将票数更新到数据库
 
         if(i>0){//删除成功
             resultMsg.setMsg(Code.DELETE_SUCCESS.getMessage());
@@ -91,7 +97,10 @@ public class GrabTicketService {
         return resultMsg;
     }
 
-    //获取抢票的活动列表
+    /**
+     *
+     * @return 首页可以抢票的活动列表
+     */
     public List<GetGrabActivityDTO> getGrabTicketList(){
         Set<String> keys = redisTemplate.keys("grabTickets::*");//获取所有满足的key
         List<GetGrabActivityDTO> list = new ArrayList<>();
