@@ -2,16 +2,19 @@ package com.sofency.ticket.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.sofency.ticket.dto.ActivityInfoDTO;
 import com.sofency.ticket.dto.ResultMsg;
 import com.sofency.ticket.enums.Code;
 import com.sofency.ticket.mapper.CommunityMapper;
-import com.sofency.ticket.pojo.Community;
-import com.sofency.ticket.pojo.CommunityExample;
+import com.sofency.ticket.mapper.GrabTicketMapper;
+import com.sofency.ticket.mapper.VoteTicketMapper;
+import com.sofency.ticket.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.*;
 
 /**
  * @author sofency
@@ -23,12 +26,18 @@ import java.util.List;
 @Service
 public class CommunityService {
     private CommunityMapper communityMapper;
+    private VoteTicketMapper voteTicketMapper;
+    private GrabTicketMapper grabTicketMapper;
     private RedisTemplate<String,Object> redisTemplate;
     @Autowired
     public CommunityService(CommunityMapper communityMapper,
+                            VoteTicketMapper voteTicketMapper,
+                            GrabTicketMapper grabTicketMapper,
                             RedisTemplate<String,Object> redisTemplate){
         this.redisTemplate= redisTemplate;
         this.communityMapper = communityMapper;
+        this.voteTicketMapper=voteTicketMapper;
+        this.grabTicketMapper = grabTicketMapper;
     }
 
     //社团的登录
@@ -94,6 +103,7 @@ public class CommunityService {
 
     //根据社团账户找到在注册的社团中
     public Community getCommunityById(int communityId){
+        //从缓存中拿取社团的信息
         Community community = JSON.parseObject(String.valueOf(redisTemplate.opsForValue().get("community::" + communityId)),
                 Community.class);
 
@@ -104,5 +114,80 @@ public class CommunityService {
             }
         }
         return community;
+    }
+
+    public List<ActivityInfoDTO> getActivity(int communityId){
+        //使用读写锁进行操作同一个列表
+        List<ActivityInfoDTO> activityInfoDTOS = new CopyOnWriteArrayList<>();//用来存储返回的值
+        Long currentDate = System.currentTimeMillis();//记录当前的时间
+
+        //投票的线程
+        Callable<Boolean> voteTicketThread = () -> {
+            //根据社团的id在投票的活动中找取投票的活动
+            try {
+                VoteTicketExample voteTicketExample = new VoteTicketExample();
+                voteTicketExample.createCriteria().andCommunityIdEqualTo(communityId);
+                List<VoteTicket> voteTickets = voteTicketMapper.selectByExample(voteTicketExample);//获取投票的活动
+                //流式处理
+                voteTickets.stream().forEach(voteTicket -> {
+                    ActivityInfoDTO activityInfoDTO = new ActivityInfoDTO();
+                    activityInfoDTO.setName(voteTicket.getActivityName());
+                    activityInfoDTO.setGrabOrVoteId(voteTicket.getActivityId());
+                    boolean flag = voteTicket.getEndTime().getTime() > currentDate ? true : false;//true 标识已经结束
+                    activityInfoDTO.setOver(flag);
+                    activityInfoDTO.setFlag(true);//true表示是投票 false是抢票
+                    activityInfoDTOS.add(activityInfoDTO);
+                });
+                return true;
+            }catch (Exception e){
+                e.printStackTrace();
+                return false;
+            }
+        };
+
+        //抢票的线程
+        Callable<Boolean> grabTicketThread = ()->{
+            try {
+                //根据社团的id在抢票的活动中找取抢票的活动
+                GrabTicketExample grabTicketExample = new GrabTicketExample();
+                grabTicketExample.createCriteria().andCommunityIdEqualTo(communityId);
+                List<GrabTicket> grabTickets = grabTicketMapper.selectByExample(grabTicketExample);
+
+                grabTickets.stream().forEach(grabTicket -> {
+                    ActivityInfoDTO activityInfoDTO = new ActivityInfoDTO();
+                    activityInfoDTO.setName(grabTicket.getActivityName());
+                    activityInfoDTO.setGrabOrVoteId(grabTicket.getGrapId());
+                    boolean flag = grabTicket.getBeginTime().getTime()>currentDate?true:false;//true 标识已经结束
+                    activityInfoDTO.setOver(flag);
+                    activityInfoDTO.setFlag(false);//true表示是投票 false是抢票
+                    activityInfoDTOS.add(activityInfoDTO);
+                });
+                return true;
+            }catch (Exception e){
+                e.printStackTrace();
+                return false;
+            }
+        };
+
+        ExecutorService service = Executors.newFixedThreadPool(2);
+        FutureTask<Boolean> voteTicketFutureTask = new FutureTask(voteTicketThread);
+        FutureTask<Boolean> grabTicketFutureTask = new FutureTask(grabTicketThread);
+        service.submit(voteTicketFutureTask);
+        service.submit(grabTicketFutureTask);
+
+        Boolean voteTicketResult;//存储投票查找的结果
+        Boolean grabTicketResult;//存储抢票查找的结果
+        try {
+            voteTicketResult= voteTicketFutureTask.get();
+            grabTicketResult = grabTicketFutureTask.get();
+            if(voteTicketResult&&grabTicketResult){
+                return activityInfoDTOS;
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

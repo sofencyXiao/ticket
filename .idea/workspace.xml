@@ -7,33 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10d8fed2-1f81-4e57-be91-7362c14e22f8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/ActivityInfoDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/ActorInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/GrabDetailDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/GrabInfoDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/IdAndCommunityId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/IsVotingDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/VoteActivityByIdDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/VoteInfoDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/config/RedisConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/CommunityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/CommunityController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/GrabTicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/GrabTicketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/StudentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/VoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/VoteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/GetGrabActivityDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/GetGrabActivityDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/GetVoteActivityDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/GetVoteActivityDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/ActorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/ActorMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/GrabTicketMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/GrabTicketMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/Actor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/ActorExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/ActorExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/GrabTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/GrabTicket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/GrabTicketExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/GrabTicketExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/CommunityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/CommunityService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/GrabTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/GrabTicketService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/StudentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/VoteTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/VoteTicketService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/GrabTicketMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/GrabTicketMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,7 +282,8 @@
       <workItem from="1587340645816" duration="1934000" />
       <workItem from="1587537691469" duration="600000" />
       <workItem from="1587988389882" duration="31481000" />
-      <workItem from="1588145016608" duration="17288000" />
+      <workItem from="1588145016608" duration="17917000" />
+      <workItem from="1588400351034" duration="2628000" />
     </task>
     <servers />
   </component>
@@ -321,10 +298,11 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="122" y="107" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1587257078955" />
-    <state x="534" y="189" key="#com.intellij.ide.util.MemberChooser" timestamp="1588000822295">
+    <state x="534" y="189" key="#com.intellij.ide.util.MemberChooser" timestamp="1588402160003">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="534" y="189" key="#com.intellij.ide.util.MemberChooser/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1588000822295" />
+    <state x="534" y="189" key="#com.intellij.ide.util.MemberChooser/0.0.1440.920@0.0.1440.920" timestamp="1588402160003" />
     <state x="505" y="345" width="431" height="239" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587254338404">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
@@ -333,6 +311,10 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="451" y="207" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1588002608949" />
+    <state x="451" y="207" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1588402314610">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state x="451" y="207" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1440.920@0.0.1440.920" timestamp="1588402314610" />
     <state x="501" y="216" key="FileChooserDialogImpl" timestamp="1588214473496">
       <screen x="0" y="0" width="1440" height="920" />
     </state>

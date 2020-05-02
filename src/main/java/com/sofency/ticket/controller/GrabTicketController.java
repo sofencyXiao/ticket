@@ -70,9 +70,10 @@ public class GrabTicketController {
 
     //根据抢票的ID和组织号 community  管理员端获取活动的信息
     @RequestMapping("/grabDetailById")
-
-
     public GrabDetailDTO grabDetailDTO(IdAndCommunityId grabIdAndCommunityId){
+
+
+
         return null;
     }
 

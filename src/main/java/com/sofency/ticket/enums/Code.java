@@ -7,6 +7,8 @@ package com.sofency.ticket.enums;
  * @description
  */
 public enum  Code {
+    SEARCH_SUCCESS(200,"查找成功"),
+    SEARCH_FAIL(404,"查找失败"),
     GRAB_SUCCESS(200,"抢票成功"),
     GRAB_FAIL(404,"抢票失败"),
     DELETE_SUCCESS(200,"退票成功"),
@@ -18,7 +20,7 @@ public enum  Code {
     REGISTER_SUCCESS(200,"注册成功"),
     REGISTER_FAIL(404,"注册失败"),
     CHANGE_SUCCESS(200,"修改成功"),
-    CHANGE_FAIL(404,"修改失败"),;
+    CHANGE_FAIL(404,"修改失败");
     private int code;
     private String message;
 

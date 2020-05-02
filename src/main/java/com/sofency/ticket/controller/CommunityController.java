@@ -2,13 +2,20 @@ package com.sofency.ticket.controller;
 
 import com.sofency.ticket.dto.ActivityInfoDTO;
 import com.sofency.ticket.dto.ResultMsg;
-import com.sofency.ticket.pojo.Community;
+import com.sofency.ticket.dto.WapActivityInfoDTO;
+import com.sofency.ticket.enums.Code;
+import com.sofency.ticket.mapper.GrabTicketMapper;
+import com.sofency.ticket.mapper.VoteTicketMapper;
+import com.sofency.ticket.pojo.*;
 import com.sofency.ticket.service.CommunityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.*;
 
 /**
  * @author sofency
@@ -21,7 +28,9 @@ public class CommunityController {
     CommunityService communityService;
 
     @Autowired
-    public CommunityController(CommunityService communityService) {
+    public CommunityController(CommunityService communityService,
+                               VoteTicketMapper voteTicketMapper,
+                               GrabTicketMapper grabTicketMapper) {
         this.communityService = communityService;
     }
 
@@ -40,9 +49,20 @@ public class CommunityController {
 
     //根据社团的id 获取所创办的活动
     @RequestMapping("/getAllActivity")
-    public List<ActivityInfoDTO> getActivityInfo(int communityId){
-        return null;
+    public WapActivityInfoDTO getActivityInfo(int communityId){
+        WapActivityInfoDTO wapActivityInfoDTO = new WapActivityInfoDTO();
+        List<ActivityInfoDTO> activity = communityService.getActivity(communityId);
+        ResultMsg resultMsg = new ResultMsg();
+        if(activity==null){
+            wapActivityInfoDTO.setActivityInfoDTOS(null);
+            resultMsg.setStatus(Code.SEARCH_FAIL.getCode());
+            resultMsg.setMsg(Code.SEARCH_FAIL.getMessage());
+        }else{
+            wapActivityInfoDTO.setActivityInfoDTOS(activity);
+            resultMsg.setStatus(Code.SEARCH_SUCCESS.getCode());
+            resultMsg.setMsg(Code.SEARCH_SUCCESS.getMessage());
+        }
+        wapActivityInfoDTO.setResultMsg(resultMsg);
+        return wapActivityInfoDTO;
     }
-
-
 }
