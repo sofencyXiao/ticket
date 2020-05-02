@@ -7,6 +7,7 @@ import com.sofency.ticket.dto.GetGrabActivityDTO;
 import com.sofency.ticket.dto.GrabInfoDTO;
 import com.sofency.ticket.dto.ResultMsg;
 import com.sofency.ticket.enums.Code;
+import com.sofency.ticket.enums.Status;
 import com.sofency.ticket.mapper.GrabTicketMapper;
 import com.sofency.ticket.mapper.StudentMapper;
 import com.sofency.ticket.mapper.TicketMapper;
@@ -104,7 +105,6 @@ public class GrabTicketService {
         }
         return resultMsg;
     }
-
     /**
      *
      * @return 首页可以抢票的活动列表
@@ -154,4 +154,28 @@ public class GrabTicketService {
             return null;
         }
     }
+
+
+//    //获取所有可以进行抢票的列表
+//    public List<GetGrabActivityDTO> getAllGrabDTO(){
+//        try {
+//            List<GetGrabActivityDTO> getGrabActivityDTOS = new ArrayList<>();
+//            GrabTicketExample example = new GrabTicketExample();
+//            example.createCriteria().andStatusEqualTo(Status.AVAILABLE.getCode());//状态唯一
+//            List<GrabTicket> grabTickets = grabTicketMapper.selectByExample(example);
+//            grabTickets.stream().forEach(grabTicket -> {
+//                GetGrabActivityDTO getGrabActivityDTO = new GetGrabActivityDTO();
+//                getGrabActivityDTO.setGrabId(grabTicket.getGrapId());
+//                getGrabActivityDTO.setActivityName(grabTicket.getActivityName());
+//                getGrabActivityDTO.setGrabActivityImgUrl(grabTicket.getActivityImage());
+//                getGrabActivityDTOS.add(getGrabActivityDTO);
+//            });
+//            return getGrabActivityDTOS;
+//        }catch (Exception e){
+//            System.out.println("在GrabTicketService中出错");
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
+
 }

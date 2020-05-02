@@ -60,4 +60,7 @@ public class StudentService {
         resultMsg.setStatus(Code.REGISTER_SUCCESS.getCode());
         return resultMsg;
     }
+
+
+
 }

@@ -5,6 +5,7 @@ import com.sofency.ticket.mapper.StudentMapper;
 import com.sofency.ticket.pojo.*;
 import com.sofency.ticket.service.CommunityService;
 import com.sofency.ticket.service.GrabTicketService;
+import com.sofency.ticket.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,9 +23,12 @@ import java.util.List;
 public class GrabTicketController {
 
     private GrabTicketService grabTicketService;
+    private StudentService studentService;
     @Autowired
-    public GrabTicketController(GrabTicketService grabTicketService) {
+    public GrabTicketController(GrabTicketService grabTicketService,
+                                StudentService studentService) {
         this.grabTicketService = grabTicketService;
+        this.studentService = studentService;
     }
 
     //发起抢票活动
@@ -73,8 +77,21 @@ public class GrabTicketController {
 
     //获取所有的抢票活动
     @RequestMapping("/getAllGrabActivity")
-    public List<GetGrabActivityDTO>  getGrabActivityDTOS(String openId){
-        return null;
+    public WapGetGrabActivityDTO  getGrabActivityDTOS(){
+        WapGetGrabActivityDTO wapGetGrabActivityDTO = new WapGetGrabActivityDTO();
+        List<GetGrabActivityDTO> allGrabDTO = grabTicketService.getGrabTicketList();
+        ResultMsg resultMsg = new ResultMsg();
+        if(allGrabDTO==null){
+            resultMsg.setStatus(Code.SEARCH_FAIL.getCode());
+            resultMsg.setMsg(Code.SEARCH_FAIL.getMessage());
+            wapGetGrabActivityDTO.setGetGrabActivityDTO(null);
+        }else{
+            resultMsg.setStatus(Code.SEARCH_SUCCESS.getCode());
+            resultMsg.setMsg(Code.SEARCH_SUCCESS.getMessage());
+            wapGetGrabActivityDTO.setGetGrabActivityDTO(allGrabDTO);
+        }
+        wapGetGrabActivityDTO.setResultMsg(resultMsg);
+        return wapGetGrabActivityDTO;
     }
 
     //开始抢票
