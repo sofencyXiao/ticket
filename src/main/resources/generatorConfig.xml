@@ -26,14 +26,14 @@
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="com.sofency.ticket.mapper"  targetProject="src\main\java">
+        <sqlMapGenerator targetPackage="mapper"  targetProject="src\main\resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
-        <javaClientGenerator type="XMLMAPPER" targetPackage="mapper"  targetProject="src\main\resources">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.sofency.ticket.mapper" targetProject="src\main\java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table tableName="grabticket" domainObjectName="GrabTicket" ></table>
+        <table tableName="voteticket" domainObjectName="VoteTicket" ></table>
     </context>
 </generatorConfiguration>

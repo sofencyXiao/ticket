@@ -75,10 +75,8 @@ public class StudentController {
     //学生的注册
     @RequestMapping("/registerStudent")
     public ResultMsg registerStudent(Student student){
-        return null;
+        ResultMsg register = studentService.register(student);
+        return register;
     }
-
-
-
 
 }

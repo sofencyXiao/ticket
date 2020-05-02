@@ -85,7 +85,6 @@ public class VoteTicketService {
             GetVoteActivityDTO getVoteActivityDTO = new GetVoteActivityDTO();
             getVoteActivityDTO.setActivityId(voteTicket.getActivityId());
             getVoteActivityDTO.setActivityName(voteTicket.getActivityName());
-            getVoteActivityDTO.setEndTime(voteTicket.getEndTime());
             list.add(getVoteActivityDTO);
         }
         return list;
@@ -114,4 +113,8 @@ public class VoteTicketService {
         voteInfoDTO.setActorInfoList(list);
         return voteInfoDTO;
     }
+
+
+
+
 }

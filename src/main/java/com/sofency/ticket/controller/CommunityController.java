@@ -11,11 +11,7 @@ import com.sofency.ticket.service.CommunityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.concurrent.*;
 
 /**
  * @author sofency

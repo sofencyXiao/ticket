@@ -1,6 +1,7 @@
 package com.sofency.ticket.controller;
 
 import com.sofency.ticket.dto.*;
+import com.sofency.ticket.enums.Code;
 import com.sofency.ticket.pojo.Actor;
 import com.sofency.ticket.service.VoteTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,21 @@ public class VoteController {
 
     //获取所有的投票的活动
     @RequestMapping("/getAllVoteActivity")
-    public List<GetVoteActivityDTO>  getVoteActivityDTOS(){
-        return null;
+    public WapGetVoteActivityDTO  getVoteActivityDTOS(){
+        WapGetVoteActivityDTO wapGetVoteActivityDTO = new WapGetVoteActivityDTO();
+        List<GetVoteActivityDTO> voteActivityDTOS = voteTicketService.getVoteActivityDTOS();
+        ResultMsg resultMsg = new ResultMsg();
+        if(voteActivityDTOS==null){
+            resultMsg.setMsg(Code.GET_VOTE_FAIL.getMessage());
+            resultMsg.setStatus(Code.GET_VOTE_FAIL.getCode());
+            wapGetVoteActivityDTO.setGetVoteActivityDTOS(null);
+        }else{
+            resultMsg.setMsg(Code.GET_VOTE_SUCCESS.getMessage());
+            resultMsg.setStatus(Code.GET_VOTE_SUCCESS.getCode());
+            wapGetVoteActivityDTO.setGetVoteActivityDTOS(voteActivityDTOS);
+        }
+        wapGetVoteActivityDTO.setResultMsg(resultMsg);
+        return wapGetVoteActivityDTO;
     }
 
     //根据活动的id活动所有参与活动的成员
@@ -51,9 +65,6 @@ public class VoteController {
         return null;
     }
 
-    //投票中间的信息
-
-
 
     //投票结束的信息
     //统计所有参赛人员的票数
@@ -61,8 +72,4 @@ public class VoteController {
     public List<IsVotingDTO> voteEnd(IdAndCommunityId ddAndCommunityId){
         return null;
     }
-
-
-
-
 }

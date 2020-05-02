@@ -7,6 +7,8 @@ package com.sofency.ticket.enums;
  * @description
  */
 public enum  Code {
+    GET_VOTE_SUCCESS(200,"获取票的列表成功"),
+    GET_VOTE_FAIL(404,"获取表的列表失败"),
     SEARCH_SUCCESS(200,"查找成功"),
     SEARCH_FAIL(404,"查找失败"),
     GRAB_SUCCESS(200,"抢票成功"),
