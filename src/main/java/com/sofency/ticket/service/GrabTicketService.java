@@ -4,14 +4,13 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.sofency.ticket.dto.BackTicketDTO;
 import com.sofency.ticket.dto.GetGrabActivityDTO;
+import com.sofency.ticket.dto.GrabInfoDTO;
 import com.sofency.ticket.dto.ResultMsg;
 import com.sofency.ticket.enums.Code;
 import com.sofency.ticket.mapper.GrabTicketMapper;
+import com.sofency.ticket.mapper.StudentMapper;
 import com.sofency.ticket.mapper.TicketMapper;
-import com.sofency.ticket.pojo.GrabTicket;
-import com.sofency.ticket.pojo.GrabTicketExample;
-import com.sofency.ticket.pojo.TicketExample;
-import com.sofency.ticket.pojo.TicketKey;
+import com.sofency.ticket.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -32,12 +31,20 @@ public class GrabTicketService {
     private GrabTicketMapper grabTicketMapper;
     private TicketMapper ticketMapper;
     private RedisTemplate<String,Object> redisTemplate;
+    private StudentMapper studentMapper;
+    private GrabTicketService grabTicketService;
+    private CommunityService communityService;
     @Autowired
     public GrabTicketService(GrabTicketMapper grabTicketMapper,
-                             TicketMapper ticketMapper,RedisTemplate<String,Object> redisTemplate) {
+                             TicketMapper ticketMapper,RedisTemplate<String,Object> redisTemplate,
+                             StudentMapper studentMapper,GrabTicketService grabTicketService,
+                             CommunityService communityService) {
         this.grabTicketMapper = grabTicketMapper;
         this.ticketMapper = ticketMapper;
         this.redisTemplate=redisTemplate;
+        this.studentMapper = studentMapper;
+        this.grabTicketService = grabTicketService;
+        this.communityService = communityService;
     }
 
     //发送抢票的活动
@@ -51,7 +58,7 @@ public class GrabTicketService {
             //将数据序列化处理
             String jsonGrabTicket = JSONObject.toJSONString(grabTicket);
             //设置缓存
-            Long lastTime = grabTicket.getEndTime().getTime()-System.currentTimeMillis();
+            Long lastTime = grabTicket.getBeginTime().getTime()-System.currentTimeMillis();
             redisTemplate.opsForValue().set("grabTicket::"+result,jsonGrabTicket,lastTime);
             redisTemplate.opsForValue().set("grabTickets::"+result,grabTicket.getActivityTicket());
 
@@ -76,6 +83,7 @@ public class GrabTicketService {
 
     //退票的活动
     public ResultMsg backTicket(String studentId,int grabId){
+
         TicketKey ticketKey = new TicketKey();
         ticketKey.setGrapId(grabId);
         ticketKey.setStuId(studentId);
@@ -102,15 +110,48 @@ public class GrabTicketService {
      * @return 首页可以抢票的活动列表
      */
     public List<GetGrabActivityDTO> getGrabTicketList(){
-        Set<String> keys = redisTemplate.keys("grabTickets::*");//获取所有满足的key
-        List<GetGrabActivityDTO> list = new ArrayList<>();
-        for (String key : keys){
-            GetGrabActivityDTO getGrabActivityDTO = new GetGrabActivityDTO();
-            GrabTicket grabTicket = (GrabTicket) redisTemplate.opsForValue().get(key);
-            getGrabActivityDTO.setActivityName(grabTicket.getActivityName());
-            getGrabActivityDTO.setGrabId(grabTicket.getGrapId());
-            list.add(getGrabActivityDTO);
+        try {
+            Set<String> keys = redisTemplate.keys("grabTickets::*");//获取所有满足的key
+            List<GetGrabActivityDTO> list = new ArrayList<>();
+            for (String key : keys){
+                GetGrabActivityDTO getGrabActivityDTO = new GetGrabActivityDTO();
+                GrabTicket grabTicket = (GrabTicket) redisTemplate.opsForValue().get(key);
+                getGrabActivityDTO.setActivityName(grabTicket.getActivityName());
+                getGrabActivityDTO.setGrabId(grabTicket.getGrapId());
+                list.add(getGrabActivityDTO);
+            }
+            return list;
+        }catch (Exception e){
+            System.out.println("grabTicketService出现错误");
+            e.printStackTrace();
+            return null;
         }
-        return list;
+    }
+
+
+    //根据id获取票的详细信息
+    public GrabInfoDTO getGrabInfoDTO(String studentId,int grabId){
+        try{
+            GrabInfoDTO grabInfoDTO = new GrabInfoDTO();
+            StudentExample studentExample = new StudentExample();
+            studentExample.createCriteria().andStudentIdEqualTo(studentId);
+            List<Student> students = studentMapper.selectByExample(studentExample);
+            grabInfoDTO.setStudent(students.get(0));//储存学生的信息
+
+            GrabTicket grabTicket = grabTicketService.selectByPrimaryKey(grabId);//根据主键获取抢票的活动信息
+            grabInfoDTO.setGrabId(grabTicket.getGrapId());//储存抢票号
+            grabInfoDTO.setActivityName(grabTicket.getActivityName());//储存活动的名字
+            grabInfoDTO.setEndTime(grabTicket.getBeginTime());//设置截止时间
+            grabInfoDTO.setTicketLevel(grabTicket.getActivityTicketLevel());//待优化
+
+            int communityId = grabTicket.getCommunityId();
+            Community communityById = communityService.getCommunityById(communityId);
+            grabInfoDTO.setCommunityName(communityById.getCommunityName());//设置社团的名字
+            return grabInfoDTO;
+        }catch (Exception e){
+            System.out.println("grabTicketService出现错误");
+            e.printStackTrace();
+            return null;
+        }
     }
 }

@@ -13,8 +13,8 @@ import java.util.Date;
  */
 @Data
 public class GrabInfoDTO {
-    private String activityName;
-    private String communityName;
+    private String activityName;//活动的名字
+    private String communityName;//社团名字
     private int ticketLevel;//当前剩余票数
     private Date endTime;//活动剩余时间
     private Student student;//当前学生的信息

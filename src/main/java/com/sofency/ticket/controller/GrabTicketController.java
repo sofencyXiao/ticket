@@ -1,6 +1,9 @@
 package com.sofency.ticket.controller;
 import com.sofency.ticket.dto.*;
-import com.sofency.ticket.pojo.GrabTicket;
+import com.sofency.ticket.enums.Code;
+import com.sofency.ticket.mapper.StudentMapper;
+import com.sofency.ticket.pojo.*;
+import com.sofency.ticket.service.CommunityService;
 import com.sofency.ticket.service.GrabTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,9 +52,22 @@ public class GrabTicketController {
 
     //根据抢票活动的id查询活动的详情
     @RequestMapping("/getInfoById")
-    public GrabInfoDTO getDetailInfo(int grabId, HttpSession session){
-        String studentId = (String) session.getAttribute("studentId");//查询学生的信息 并返回结果
-        return null;
+    public WapGrabInfoDTO getDetailInfo(int grabId, HttpSession session){
+        WapGrabInfoDTO wapGrabInfoDTO = new WapGrabInfoDTO();//整体返回的数据包括状态
+        String studentId = (String) session.getAttribute("studentId");//从会话中拿取学号
+        GrabInfoDTO grabInfoDTO = grabTicketService.getGrabInfoDTO(studentId, grabId);
+        ResultMsg resultMsg = new ResultMsg();
+        if(grabInfoDTO==null){
+            resultMsg.setMsg(Code.SEARCH_FAIL.getMessage());
+            resultMsg.setStatus(Code.SEARCH_FAIL.getCode());
+            wapGrabInfoDTO.setGrabInfoDTO(null);
+        }else{
+            resultMsg.setMsg(Code.SEARCH_SUCCESS.getMessage());
+            resultMsg.setStatus(Code.SEARCH_SUCCESS.getCode());
+            wapGrabInfoDTO.setGrabInfoDTO(grabInfoDTO);
+        }
+        wapGrabInfoDTO.setResultMsg(resultMsg);
+        return wapGrabInfoDTO;
     }
 
 
