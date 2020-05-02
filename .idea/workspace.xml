@@ -7,21 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10d8fed2-1f81-4e57-be91-7362c14e22f8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/WapGetVoteActivityDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/CommunityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/CommunityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/GrabTicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/GrabTicketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/StudentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/VoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/VoteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/GrabDetailDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/GrabDetailDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/VoteTicketMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/mapper/VoteTicketMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/VoteTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/VoteTicket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/VoteTicketExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/pojo/VoteTicketExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/GrabTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/GrabTicketService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/StudentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/VoteTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/VoteTicketService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/StudentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/StudentMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/VoteTicketMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/VoteTicketMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +46,7 @@
         <item name="ticket@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="ticket: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="grabticket: table" type="285a2a93:MysqlImplModel$Table" />
+        <item name="actor: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
@@ -68,13 +54,6 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="ticket: schema" type="76f4a085:MysqlImplModel$Schema" />
         <item name="student: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="ticket@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="ticket: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="voteticket: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -274,7 +253,7 @@
       <workItem from="1587537691469" duration="600000" />
       <workItem from="1587988389882" duration="31481000" />
       <workItem from="1588145016608" duration="17917000" />
-      <workItem from="1588400351034" duration="10646000" />
+      <workItem from="1588400351034" duration="12155000" />
     </task>
     <servers />
   </component>

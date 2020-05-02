@@ -105,7 +105,7 @@ public class VoteTicketService {
         AtomicInteger cnt= new AtomicInteger();
         actors.stream().forEach(actor -> {
             ActorInfo actorInfo = new ActorInfo();
-            actorInfo.setId(cnt.getAndIncrement());
+            actorInfo.setActorId(cnt.getAndIncrement());
             actorInfo.setName(actor.getName());
             actorInfo.setTickets(actor.getGetVoted());
             list.add(actorInfo);
