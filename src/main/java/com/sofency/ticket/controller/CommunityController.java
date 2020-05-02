@@ -28,10 +28,9 @@ public class CommunityController {
     CommunityService communityService;
 
     @Autowired
-    public CommunityController(CommunityService communityService,
-                               VoteTicketMapper voteTicketMapper,
-                               GrabTicketMapper grabTicketMapper) {
+    public CommunityController(CommunityService communityService) {
         this.communityService = communityService;
+
     }
 
     @RequestMapping("/login")

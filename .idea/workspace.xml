@@ -7,8 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10d8fed2-1f81-4e57-be91-7362c14e22f8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/dto/WapActivityInfoDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/CommunityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/CommunityController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/GrabTicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/controller/GrabTicketController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/enums/Code.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/enums/Code.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/CommunityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofency/ticket/service/CommunityService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -283,7 +285,7 @@
       <workItem from="1587537691469" duration="600000" />
       <workItem from="1587988389882" duration="31481000" />
       <workItem from="1588145016608" duration="17917000" />
-      <workItem from="1588400351034" duration="2628000" />
+      <workItem from="1588400351034" duration="3362000" />
     </task>
     <servers />
   </component>
