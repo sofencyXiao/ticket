@@ -12,6 +12,8 @@ public enum  Code {
     GET_VOTE_FAIL(404,"获取表的列表失败"),
     SEARCH_SUCCESS(200,"查找成功"),
     SEARCH_FAIL(404,"查找失败"),
+    VOTE_SUCCESS(200,"投票成功"),
+    VOTE_FAIL(404,"投票失败"),
     GRAB_SUCCESS(200,"抢票成功"),
     GRAB_FAIL(404,"抢票失败"),
     DELETE_SUCCESS(200,"退票成功"),

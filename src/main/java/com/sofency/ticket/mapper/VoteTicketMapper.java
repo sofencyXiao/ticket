@@ -1,5 +1,6 @@
 package com.sofency.ticket.mapper;
 
+import com.sofency.ticket.pojo.Actor;
 import com.sofency.ticket.pojo.VoteTicket;
 import com.sofency.ticket.pojo.VoteTicketExample;
 import java.util.List;

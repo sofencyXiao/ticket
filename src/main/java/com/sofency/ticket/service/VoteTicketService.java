@@ -6,9 +6,11 @@ import com.sofency.ticket.dto.*;
 import com.sofency.ticket.enums.Code;
 import com.sofency.ticket.enums.Constants;
 import com.sofency.ticket.mapper.ActorMapper;
+import com.sofency.ticket.mapper.VoteStudentMapper;
 import com.sofency.ticket.mapper.VoteTicketMapper;
 import com.sofency.ticket.pojo.Actor;
 import com.sofency.ticket.pojo.ActorExample;
+import com.sofency.ticket.pojo.VoteStudent;
 import com.sofency.ticket.pojo.VoteTicket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -31,13 +34,16 @@ public class VoteTicketService {
 
     private VoteTicketMapper voteTicketMapper;
     private ActorMapper actorMapper;
+    private VoteStudentMapper voteStudentMapper;
     private RedisTemplate<String,Object> redisTemplate;
     @Autowired
     public VoteTicketService(VoteTicketMapper voteTicketMapper,ActorMapper actorMapper,
-                             RedisTemplate<String,Object> redisTemplate) {
+                             RedisTemplate<String,Object> redisTemplate,
+                             VoteStudentMapper voteStudentMapper) {
         this.voteTicketMapper = voteTicketMapper;
         this.actorMapper=actorMapper;
         this.redisTemplate = redisTemplate;
+        this.voteStudentMapper = voteStudentMapper;
     }
 
     //发起投票活动
@@ -122,14 +128,28 @@ public class VoteTicketService {
      *  private String isVotedStuId;//被投票人的学号
      * @return
      */
-    public ResultMsg vote(int activityId,String voteStuId,String isVotedStuId){
+    @Transactional
+    public ResultMsg vote(int activityId,String voteStuId,int actorId){
         //业务逻辑
         //被投票人的获票数量增加  注意使用数据库的行级锁
-
-
+        ResultMsg resultMsg = new ResultMsg();
         //搜索被投票人的编号 写入到votestudent表中
-
-
-        return null;
+        int i = actorMapper.addVoted(actorId);//返回值表示插入影响的行数
+        if(i>0){
+            VoteStudent voteStudent = new VoteStudent();
+            voteStudent.setActivityId(activityId);
+            voteStudent.setActorId(actorId);
+            voteStudent.setGmtCreate(new Date(System.currentTimeMillis()));
+            voteStudent.setStudentId(voteStuId);
+            int insert = voteStudentMapper.insert(voteStudent);
+            if(insert>0){
+                resultMsg.setStatus(Code.VOTE_SUCCESS.getCode());
+                resultMsg.setMsg(Code.VOTE_SUCCESS.getMessage());
+                return resultMsg;
+            }
+        }
+        resultMsg.setStatus(Code.VOTE_FAIL.getCode());
+        resultMsg.setMsg(Code.VOTE_FAIL.getMessage());
+        return resultMsg;
     }
 }

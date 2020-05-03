@@ -102,4 +102,6 @@ public interface ActorMapper {
      * @mbg.generated Wed Apr 29 18:29:03 CST 2020
      */
     int updateByPrimaryKey(Actor record);
+
+    int addVoted(int actorId);
 }
