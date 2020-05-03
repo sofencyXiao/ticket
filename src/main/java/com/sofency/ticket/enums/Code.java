@@ -7,6 +7,7 @@ package com.sofency.ticket.enums;
  * @description
  */
 public enum  Code {
+    EXCEPTION_UN_KNOW(404,"未知错误"),
     GET_VOTE_SUCCESS(200,"获取票的列表成功"),
     GET_VOTE_FAIL(404,"获取表的列表失败"),
     SEARCH_SUCCESS(200,"查找成功"),
@@ -21,6 +22,9 @@ public enum  Code {
     LOGIN_FAIL(404,"登录失败"),
     REGISTER_SUCCESS(200,"注册成功"),
     REGISTER_FAIL(404,"注册失败"),
+    HAS_BUY(404,"已经购买过"),
+    CAN_BUY(200,"可以购买"),
+    CAN_NOT_BUY(404,"可以购买"),
     CHANGE_SUCCESS(200,"修改成功"),
     CHANGE_FAIL(404,"修改失败");
     private int code;

@@ -9,33 +9,10 @@
         
         <!-- 配置service接口 -->
 	<bean id="communityService" class="com.sofency.ticket.service.CommunityService"></bean>
-<!--	<bean id="loginService" class="com.sofency.ticket.service.impl.LoginServiceImpl"/>-->
-<!--	<bean id="instituteMajorService" class="com.sofency.ssm.service.impl.InstituteMajorServiceImpl"/>-->
-<!--	<bean id="fameService" class="com.sofency.ssm.service.impl.FameServiceImpl"/>-->
-<!--	<bean id="engineerService" class="com.sofency.ssm.service.impl.EngineerServiceImpl"/>-->
-<!--	<bean id="candidateService" class="com.sofency.ssm.service.impl.CandidateServiceImpl"/>-->
-<!--	<bean id="getFameService" class="com.sofency.ssm.service.impl.GetFameServiceImpl"/>-->
-<!--	<bean id="messageService" class="com.sofency.ssm.service.impl.MessageServiceImpl"/>-->
-
-<!--        &lt;!&ndash; 邮件类 &ndash;&gt;-->
-<!--	<bean id="sendMailUtilService" class="com.sofency.ssm.service.impl.SendMailUtilServiceImpl"/>-->
-		 <!--邮件配置-->
-<!--	<context:property-placeholder location="classpath:mail.properties" ignore-unresolvable="true"/>-->
-<!--	&lt;!&ndash;配置邮件接口&ndash;&gt;-->
-<!--	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">-->
-<!--		<property name="host" value="${mail.smtp.host}"/>-->
-<!--		<property name="username" value="${mail.smtp.username}"/>-->
-<!--		<property name="password" value="${mail.smtp.password}"/>-->
-<!--		<property name="defaultEncoding" value="${mail.smtp.defaultEncoding}"/>-->
-<!--		<property name="javaMailProperties">-->
-<!--			<props>-->
-<!--				<prop key="mail.smtp.auth">${mail.smtp.auth}</prop>-->
-<!--				<prop key="mail.smtp.timeout">${mail.smtp.timeout}</prop>-->
-<!--				<prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>-->
-<!--				<prop key="mail.smtp.port">465</prop>-->
-<!--			</props>-->
-<!--		</property>-->
-<!--	</bean>-->
+	<bean id="grabTicketService" class="com.sofency.ticket.service.GrabTicketService"></bean>
+	<bean id="voteTicketService" class="com.sofency.ticket.service.VoteTicketService"></bean>
+	<bean id="ticketService" class="com.sofency.ticket.service.TicketService"></bean>
+	<bean id="studentService" class="com.sofency.ticket.service.StudentService"></bean>
 
 
 	<context:property-placeholder ignore-unresolvable="true" location="classpath:redis.properties" />
@@ -54,14 +31,15 @@
 		<property name="poolConfig" ref="poolConfig" />
 	</bean>
 
-	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate" >
 		<property name="connectionFactory" ref="jedisConnectionFactory" />
-		<!--可以序列化对象-->
-		<property name="defaultSerializer">
-			<bean  class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+		<property name="keySerializer">
+			<bean  class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+		</property>
+		<property name="valueSerializer">
+			<bean  class="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer" />
 		</property>
 	</bean>
-
 	<bean id="redisCacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
 		<constructor-arg name="redisOperations" ref="redisTemplate" />
 		<property name="defaultExpiration" value="${redis.expiration}" />
@@ -73,4 +51,5 @@
 		<constructor-arg ref="redisTemplate" />
 		<constructor-arg ref="redisCacheManager" />
 	</bean>
+
 </beans>

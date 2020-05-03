@@ -16,6 +16,6 @@ public class StudentDTO {
     private String activityName;//活动名称
     private int grabId;//抢票的活动
     private String communityName;//承办方
-    private String name;
+    private String name;//姓名
     private Date endTime;//活动结束时间
 }

@@ -102,4 +102,16 @@ public interface GrabTicketMapper {
      * @mbg.generated Wed Apr 29 19:44:01 CST 2020
      */
     int updateByPrimaryKey(GrabTicket record);
+
+    /**
+     * 票数加1 退票功能
+     */
+    int addTicket(int grabId);
+
+    /**
+     * 票数减1
+     * @param grabId
+     * @return
+     */
+    int decrTicket(int grabId);
 }

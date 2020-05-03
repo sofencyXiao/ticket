@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.sofency.ticket.dto.*;
 import com.sofency.ticket.enums.Code;
+import com.sofency.ticket.enums.Constants;
 import com.sofency.ticket.mapper.ActorMapper;
 import com.sofency.ticket.mapper.VoteTicketMapper;
 import com.sofency.ticket.pojo.Actor;
@@ -42,10 +43,10 @@ public class VoteTicketService {
     //发起投票活动
     @Transactional(rollbackFor = {Exception.class})
     public ResultMsg voteTicket(VoteActivity voteActivity){
-
         ResultMsg resultMsg = new ResultMsg();
         try {
-            List<Actor> actors = voteActivity.getActors();//获取所有参与的学生
+            //获取所有参与的学生
+            List<Actor> actors = voteActivity.getActors();
             VoteTicket voteTicket = new VoteTicket();
             voteTicket.setActivityName(voteActivity.getActivityName());
             voteTicket.setBeginTime(voteActivity.getBeginTime());
@@ -63,7 +64,7 @@ public class VoteTicketService {
                 String voteTicketJson = JSONObject.toJSONString(voteActivity);
                 //设置截止时间
                 Long lastTime = voteActivity.getEndTime().getTime()-System.currentTimeMillis();
-                redisTemplate.opsForValue().set("voteTicket::"+insert,voteTicketJson,lastTime);
+                redisTemplate.opsForValue().set(Constants.VOTE_TICKET +insert,voteTicketJson,lastTime);
 
                 resultMsg.setMsg(Code.SEND_VOTE_SUCCESS.getMessage());
                 resultMsg.setStatus(Code.SEND_VOTE_SUCCESS.getCode());
@@ -78,7 +79,7 @@ public class VoteTicketService {
 
     //获取可以投票的活动  对于查询类的数据放到缓存中
     public List<GetVoteActivityDTO> getVoteActivityDTOS(){
-        Set<String> keys = redisTemplate.keys("voteTicket::*");
+        Set<String> keys = redisTemplate.keys(Constants.VOTE_TICKET +"*");
         List<GetVoteActivityDTO> list = new ArrayList<>();
         for(String  key:keys){
             VoteTicket voteTicket = JSON.parseObject(String.valueOf(redisTemplate.opsForValue().get(key)),VoteTicket.class);
@@ -92,7 +93,7 @@ public class VoteTicketService {
 
     //根据活动的编号获取所要投票的情况
     public VoteInfoDTO getVoteInfo(int activityId){
-        VoteTicket voteTicket = JSON.parseObject(String.valueOf(redisTemplate.opsForValue().get("voteTicket::"+activityId)),
+        VoteTicket voteTicket = JSON.parseObject(String.valueOf(redisTemplate.opsForValue().get(Constants.VOTE_TICKET +activityId)),
                 VoteTicket.class);
         VoteInfoDTO voteInfoDTO = new VoteInfoDTO();
         voteInfoDTO.setEndTime(voteTicket.getEndTime());//设置过期的时间
@@ -115,6 +116,20 @@ public class VoteTicketService {
     }
 
 
+    /**
+     *  private int activityId;//活动号
+     *  private String voteStuId;//投票人的学号
+     *  private String isVotedStuId;//被投票人的学号
+     * @return
+     */
+    public ResultMsg vote(int activityId,String voteStuId,String isVotedStuId){
+        //业务逻辑
+        //被投票人的获票数量增加  注意使用数据库的行级锁
 
 
+        //搜索被投票人的编号 写入到votestudent表中
+
+
+        return null;
+    }
 }

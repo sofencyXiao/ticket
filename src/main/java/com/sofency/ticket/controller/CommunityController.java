@@ -42,11 +42,11 @@ public class CommunityController {
         return register;
     }
 
-    //根据社团的id 获取所创办的活动
+    //根据社团的账户 获取所创办的活动
     @RequestMapping("/getAllActivity")
-    public WapActivityInfoDTO getActivityInfo(int communityId){
+    public WapActivityInfoDTO getActivityInfo(String communityAccount){
         WapActivityInfoDTO wapActivityInfoDTO = new WapActivityInfoDTO();
-        List<ActivityInfoDTO> activity = communityService.getActivity(communityId);
+        List<ActivityInfoDTO> activity = communityService.getActivity(communityAccount);
         ResultMsg resultMsg = new ResultMsg();
         if(activity==null){
             wapActivityInfoDTO.setActivityInfoDTOS(null);

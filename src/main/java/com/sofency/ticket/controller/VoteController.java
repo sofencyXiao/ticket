@@ -80,13 +80,8 @@ public class VoteController {
     //开始投票
     @RequestMapping("/vote")
     public ResultMsg voteToStudentID(VoteActivityByIdDTO voteActivityByIdDTO){
+
         return null;
     }
 
-    //投票结束的信息
-    //统计所有参赛人员的票数
-    @RequestMapping("/voteEnd")
-    public List<IsVotingDTO> voteEnd(IdAndCommunityId ddAndCommunityId){
-        return null;
-    }
 }

@@ -1,15 +1,11 @@
 package com.sofency.ticket.controller;
 import com.sofency.ticket.dto.*;
 import com.sofency.ticket.enums.Code;
-import com.sofency.ticket.mapper.StudentMapper;
 import com.sofency.ticket.pojo.*;
-import com.sofency.ticket.service.CommunityService;
 import com.sofency.ticket.service.GrabTicketService;
-import com.sofency.ticket.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -23,12 +19,9 @@ import java.util.List;
 public class GrabTicketController {
 
     private GrabTicketService grabTicketService;
-    private StudentService studentService;
     @Autowired
-    public GrabTicketController(GrabTicketService grabTicketService,
-                                StudentService studentService) {
+    public GrabTicketController(GrabTicketService grabTicketService) {
         this.grabTicketService = grabTicketService;
-        this.studentService = studentService;
     }
 
     //发起抢票活动
@@ -36,6 +29,7 @@ public class GrabTicketController {
     public ResultMsg sendGrab(GrabTicket grabTicket){
         int tickets = grabTicket.getActivityTicket();//获取要发布的票数
         grabTicket.setActivityTicketLevel(tickets);//设置剩余票的数量
+        //设置到缓存中
         //活动的状态置为1; 表示还没过期
         grabTicket.setStatus((byte) 1);
         //开始插入到数据库
@@ -96,7 +90,11 @@ public class GrabTicketController {
 
     //开始抢票
     @RequestMapping("/startGrabTicket")
-    public ResultMsg startGrabTicket(int  grabId){
-        return  null;
+    public ResultMsg startGrabTicket(int  grabId,HttpSession session){
+        //从session里面获取用户的学号
+        String studentId = (String) session.getAttribute("studentId");//获取所有的属性
+        //根据学号和grabId进行在redis中查询.
+        ResultMsg resultMsg = grabTicketService.grabTicket(grabId, studentId);
+        return  resultMsg;
     }
 }

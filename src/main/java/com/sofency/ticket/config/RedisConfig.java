@@ -1,25 +1,21 @@
 package com.sofency.ticket.config;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.databind.ObjectMapper;
+/**
+ * @author sofency
+ * @date 2020/5/3 0:36
+ * @package IntelliJ IDEA
+ * @description
+ */
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.cache.interceptor.KeyGenerator;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
-
-import java.lang.reflect.Method;
-import java.net.UnknownHostException;
 
 /**
  * @author sofency
@@ -29,36 +25,34 @@ import java.net.UnknownHostException;
  */
 
 @Configuration
-public class RedisConfig {
+@EnableCaching
+public class RedisConfig extends CachingConfigurerSupport {
+    protected final static Logger log = LoggerFactory.getLogger(RedisConfig.class);
 
-    @Bean
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) throws UnknownHostException {
-        //一般开发使用的是String Object
-        RedisTemplate<String, Object> template = new RedisTemplate();
-        //json的序列化配置
-        Jackson2JsonRedisSerializer<Object> objectJackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<Object>(Object.class);
-        //配置key的序列化方式
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+    private volatile JedisConnectionFactory mJedisConnectionFactory;
+    private volatile RedisTemplate<String, String> mRedisTemplate;
+    private volatile RedisCacheManager mRedisCacheManager;
 
-        objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+    public RedisConfig() {
+        super();
+    }
 
-        objectJackson2JsonRedisSerializer.setObjectMapper(objectMapper);
+    public RedisConfig(JedisConnectionFactory mJedisConnectionFactory, RedisTemplate<String, String> mRedisTemplate, RedisCacheManager mRedisCacheManager) {
+        super();
+        this.mJedisConnectionFactory = mJedisConnectionFactory;
+        this.mRedisTemplate = mRedisTemplate;
+        this.mRedisCacheManager = mRedisCacheManager;
+    }
 
+    public JedisConnectionFactory redisConnectionFactory() {
+        return mJedisConnectionFactory;
+    }
 
-        //String 的序列化方式
-        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
-        template.setKeySerializer(stringRedisSerializer);
-        //hash也可以采用String 的序列化方式
-        template.setConnectionFactory(redisConnectionFactory);
-        template.setHashKeySerializer(stringRedisSerializer);
+    public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory cf) {
+        return mRedisTemplate;
+    }
 
-        //value的序列化
-        template.setValueSerializer(objectJackson2JsonRedisSerializer);
-        //hash值的序列化也采用jackson
-        template.setHashValueSerializer(objectJackson2JsonRedisSerializer);
-        template.afterPropertiesSet();
-
-        return template;
+    public CacheManager cacheManager(RedisTemplate<?, ?> redisTemplate) {
+        return mRedisCacheManager;
     }
 }
