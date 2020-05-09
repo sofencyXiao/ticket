@@ -429,4 +429,13 @@
       order by ${orderByClause}
     </if>
   </select>
+
+  <update id="addTicket" parameterType="INTEGER">
+    update grabticket set activity_ticket_level=activity_ticket_level+1 where grap_id=#{grabId}
+  </update>
+
+  <update id="decrTicket" parameterType="INTEGER">
+    update grabticket set activity_ticket_level=activity_ticket_level - 1 where grap_id=#{grabId}
+  </update>
+
 </mapper>

@@ -32,6 +32,6 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table tableName="votestudent" domainObjectName="VoteStudent" ></table>
+        <table tableName="voteticket" domainObjectName="VoteTicket" ></table>
     </context>
 </generatorConfiguration>

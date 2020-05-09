@@ -17,8 +17,8 @@
      <!--   	<mvc:resources location="/img/" mapping="/img/**"></mvc:resources>
        	<mvc:resources location="/js/" mapping="/ja/**"></mvc:resources> -->
 
-       <!-- 全局异常类 -->
-<!--       	<bean class="com.sofency.ssm.exception.CustomExceptionResolver"/>-->
+       <!-- 全局异常类  需要注册到spring 中 结合ControllerAdvice 和 ExceptionHandler使用-->
+       	<bean class="com.sofency.ticket.advice.ExceptionHandlerCustom"/>
        	<mvc:annotation-driven>
 			<mvc:message-converters>
 				<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">

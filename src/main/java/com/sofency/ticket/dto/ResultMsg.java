@@ -13,4 +13,5 @@ public class ResultMsg {
     private int status;//状态码
     private String msg;//返回的消息
     private String communityAccount;//账号
+    private Integer communityId;//社团的ID
 }

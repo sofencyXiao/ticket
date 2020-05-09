@@ -10,7 +10,7 @@ import lombok.Data;
  */
 @Data
 public class ActorInfo {
-    private int actorId;
+    private int actorId;//参与者的id
     private int tickets;//所获票数
-    private String name;
+    private String name;//名字
 }

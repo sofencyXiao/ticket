@@ -54,6 +54,7 @@ public class CommunityService {
             if(equals){//说明成功了
                 resultMsg.setMsg(Code.LOGIN_SUCCESS.getMessage());
                 resultMsg.setStatus(Code.LOGIN_SUCCESS.getCode());
+                resultMsg.setCommunityId(communityRedis.getCommunityId());
             }else {
                 resultMsg.setMsg(Code.LOGIN_FAIL.getMessage());
                 resultMsg.setStatus(Code.LOGIN_FAIL.getCode());
@@ -66,6 +67,8 @@ public class CommunityService {
                 if(communities.get(0).getPassword().equals(password)){
                     resultMsg.setMsg(Code.LOGIN_SUCCESS.getMessage());
                     resultMsg.setStatus(Code.LOGIN_SUCCESS.getCode());
+                    //存储的是社团的自增id
+                    resultMsg.setCommunityId(communities.get(0).getCommunityId());
                     String jsonCommunity = JSONObject.toJSONString(communities.get(0));
                     //设置两个缓存
                     redisTemplate.opsForValue().set(Constants.COMMUNITY +communities.get(0).getCommunityId(),jsonCommunity);
@@ -81,6 +84,8 @@ public class CommunityService {
 
     //注册社团
     public ResultMsg registerOrChange(Community community){
+
+
         String communityAccount = community.getCommunityAccount();
         ResultMsg resultMsg = new ResultMsg();
         if(communityAccount==null||communityAccount==""){//说明是插入

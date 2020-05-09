@@ -4,6 +4,7 @@ import com.sofency.ticket.dto.ActivityInfoDTO;
 import com.sofency.ticket.dto.ResultMsg;
 import com.sofency.ticket.dto.WapActivityInfoDTO;
 import com.sofency.ticket.enums.Code;
+import com.sofency.ticket.exception.UnKnowException;
 import com.sofency.ticket.mapper.GrabTicketMapper;
 import com.sofency.ticket.mapper.VoteTicketMapper;
 import com.sofency.ticket.pojo.*;
@@ -11,6 +12,8 @@ import com.sofency.ticket.service.CommunityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -30,9 +33,18 @@ public class CommunityController {
     }
 
     @RequestMapping("/login")
-    public ResultMsg login(Community community){
-       ResultMsg resultMsg = communityService.login(community);
-       return resultMsg;
+    public ResultMsg login(Community community, HttpSession session){
+
+        ResultMsg resultMsg = new ResultMsg();
+        if(community.getCommunityAccount()==null&&community.getPassword()==null){
+            resultMsg.setStatus(Code.EXCEPTION_UN_KNOW.getCode());
+            resultMsg.setMsg(Code.EXCEPTION_UN_KNOW.getMessage());
+            throw new UnKnowException(resultMsg);
+        }
+        Community community1 = communityService.getCommunityByAccount(community.getCommunityAccount());
+        session.setAttribute("communityId",community1.getCommunityId());
+        resultMsg = communityService.login(community);
+        return resultMsg;
     }
 
     //注册社团的接口

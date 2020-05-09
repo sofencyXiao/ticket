@@ -5,13 +5,13 @@ import com.sofency.ticket.enums.Code;
 import com.sofency.ticket.mapper.ActorMapper;
 import com.sofency.ticket.pojo.Actor;
 import com.sofency.ticket.pojo.ActorExample;
-import com.sofency.ticket.pojo.VoteTicketExample;
 import com.sofency.ticket.service.VoteTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
+import javax.servlet.http.HttpSession;
+
 import java.util.List;
 
 /**
@@ -33,7 +33,10 @@ public class VoteController {
 
     //发起投票活动
     @RequestMapping("/sendVoteTicket")
-    public ResultMsg vote(VoteActivity voteActivity){
+    public ResultMsg vote(VoteActivity voteActivity, HttpSession session){
+        Integer communityId = (Integer) session.getAttribute("communityId");
+        //更该 从session里面获取社团的id
+        voteActivity.setCommunityId(communityId);
         ResultMsg resultMsg = voteTicketService.voteTicket(voteActivity);
         return resultMsg;
     }
@@ -80,8 +83,19 @@ public class VoteController {
     //开始投票
     @RequestMapping("/vote")
     public ResultMsg voteToStudentID(VoteActivityByIdDTO voteActivityByIdDTO){
-
-        return null;
+        Integer activityId = voteActivityByIdDTO.getActivityId();//活动号
+        String voteStuId = voteActivityByIdDTO.getVoteStuId();//投票人的学号
+        String isVoteStuId = voteActivityByIdDTO.getIsVotedStuId();//被投票人的学号
+        ActorExample actorExample = new ActorExample();
+        actorExample.createCriteria().andStuIdEqualTo(isVoteStuId);
+        List<Actor> actors = actorMapper.selectByExample(actorExample);
+        ResultMsg resultMsg = new ResultMsg();
+        if(actors.size()!=0){
+            resultMsg = voteTicketService.vote(activityId, voteStuId, actors.get(0).getActorId());
+            return resultMsg;
+        }
+        resultMsg.setStatus(Code.VOTE_FAIL.getCode());
+        resultMsg.setMsg(Code.VOTE_FAIL.getMessage());
+        return resultMsg;
     }
-
 }

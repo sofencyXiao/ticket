@@ -17,6 +17,7 @@ public class GrabInfoDTO {
     private String communityName;//社团名字
     private int ticketLevel;//当前剩余票数
     private Date endTime;//活动剩余时间
+    private Date beginTime;//开始时间
     private Student student;//当前学生的信息
     private int grabId;//抢票的ID
 }

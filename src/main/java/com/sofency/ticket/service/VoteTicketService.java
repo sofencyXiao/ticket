@@ -133,8 +133,9 @@ public class VoteTicketService {
         //业务逻辑
         //被投票人的获票数量增加  注意使用数据库的行级锁
         ResultMsg resultMsg = new ResultMsg();
-        //搜索被投票人的编号 写入到votestudent表中
+        //搜索被投票人的编号 写入到voteStudent表中 增加投票的数量
         int i = actorMapper.addVoted(actorId);//返回值表示插入影响的行数
+
         if(i>0){
             VoteStudent voteStudent = new VoteStudent();
             voteStudent.setActivityId(activityId);

@@ -7,6 +7,7 @@ package com.sofency.ticket.enums;
  * @description
  */
 public enum  Code {
+    NEEDS_ARGS(404,"需要参数"),
     EXCEPTION_UN_KNOW(404,"未知错误"),
     GET_VOTE_SUCCESS(200,"获取票的列表成功"),
     GET_VOTE_FAIL(404,"获取表的列表失败"),

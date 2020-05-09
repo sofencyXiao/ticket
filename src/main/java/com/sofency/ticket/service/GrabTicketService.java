@@ -142,6 +142,7 @@ public class GrabTicketService {
 
             GrabTicket grabTicket = grabTicketMapper.selectByPrimaryKey(grabId);//根据主键获取抢票的活动信息
             grabInfoDTO.setGrabId(grabTicket.getGrapId());//储存抢票号
+            grabInfoDTO.setBeginTime(grabTicket.getBeginTime());//储存开始时间
             grabInfoDTO.setActivityName(grabTicket.getActivityName());//储存活动的名字
             grabInfoDTO.setEndTime(grabTicket.getBeginTime());//设置截止时间
             grabInfoDTO.setTicketLevel(grabTicket.getActivityTicketLevel());//待优化
