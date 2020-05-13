@@ -1,9 +1,11 @@
 package com.sofency.ticket.controller;
 import com.sofency.ticket.dto.*;
 import com.sofency.ticket.enums.Code;
+import com.sofency.ticket.enums.Constants;
 import com.sofency.ticket.pojo.*;
-import com.sofency.ticket.service.GrabTicketService;
+import com.sofency.ticket.service.impl.GrabTicketServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpSession;
@@ -18,10 +20,12 @@ import java.util.List;
 @RestController
 public class GrabTicketController {
 
-    private GrabTicketService grabTicketService;
+    private GrabTicketServiceImpl grabTicketService;
+    private RedisTemplate<String,Object> redisTemplate;
     @Autowired
-    public GrabTicketController(GrabTicketService grabTicketService) {
+    public GrabTicketController(GrabTicketServiceImpl grabTicketService, RedisTemplate<String,Object> redisTemplate) {
         this.grabTicketService = grabTicketService;
+        this.redisTemplate = redisTemplate;
     }
 
     //发起抢票活动
@@ -52,7 +56,8 @@ public class GrabTicketController {
     @RequestMapping("/getInfoById")
     public WapGrabInfoDTO getDetailInfo(int grabId, HttpSession session){
         WapGrabInfoDTO wapGrabInfoDTO = new WapGrabInfoDTO();//整体返回的数据包括状态
-        String studentId = (String) session.getAttribute("studentId");//从会话中拿取学号
+//        String studentId = (String) session.getAttribute("studentId");//从会话中拿取学号
+        String studentId ="41702070701";
         GrabInfoDTO grabInfoDTO = grabTicketService.getGrabInfoDTO(studentId, grabId);
         ResultMsg resultMsg = new ResultMsg();
         if(grabInfoDTO==null){
@@ -91,10 +96,19 @@ public class GrabTicketController {
     //开始抢票
     @RequestMapping("/startGrabTicket")
     public ResultMsg startGrabTicket(int  grabId,HttpSession session){
-        //从session里面获取用户的学号
-        String studentId = (String) session.getAttribute("studentId");//获取所有的属性
+//        从session里面获取用户的学号
+//        String studentId = (String) session.getAttribute("studentId");//获取所有的属性
         //根据学号和grabId进行在redis中查询.
-        ResultMsg resultMsg = grabTicketService.grabTicket(grabId, studentId);
+        ResultMsg resultMsg =null;
+        try {
+            String studentId = "41702070701";
+            resultMsg = grabTicketService.grabTicket(grabId, studentId);
+        }catch (Exception e){
+            resultMsg = new ResultMsg();
+            redisTemplate.opsForValue().increment(Constants.GRAB_TICKETS +grabId,1);
+            resultMsg.setStatus(Code.EXCEPTION_UN_KNOW.getCode());
+            resultMsg.setMsg(Code.EXCEPTION_UN_KNOW.getMessage());
+        }
         return  resultMsg;
     }
 }

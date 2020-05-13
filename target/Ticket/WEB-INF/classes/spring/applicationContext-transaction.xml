@@ -9,23 +9,34 @@
 
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+	<!-- 拦截器方式配置事物 -->
+	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="append*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="modify*" propagation="REQUIRED" />
+			<tx:method name="edit*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="repair" propagation="REQUIRED" />
+			<tx:method name="grabTicket" propagation="REQUIRED" />
 
-        <!-- 配置通知 -->
-        <tx:advice id="txAdvice" transaction-manager="transactionManager">
-        	<tx:attributes>
-        	<!-- 对事务传播行为的命名约束 以及传播约束 -->
-        		<tx:method name="save*" propagation="REQUIRED"/>
-        		<tx:method name="update*" propagation="REQUIRED"/>
-        		<tx:method name="insert*" propagation="REQUIRED" isolation="READ_COMMITTED"/>
-        		<tx:method name="delete*" propagation="REQUIRED"/>
-        		<tx:method name="find*" propagation="SUPPORTS" read-only="true"/>
-        		<tx:method name="get*" propagation="SUPPORTS" read-only="true"/>
-        		<tx:method name="select*" propagation="SUPPORTS" read-only="true"/>
-        	</tx:attributes>
-        </tx:advice>
-        
-        <!-- aop编程 -->
-        <aop:config>
-        	<aop:advisor advice-ref="txAdvice" pointcut="execution(* com.sofency.ticket.service.*.*(..) )"/>
-        </aop:config>
+			<tx:method name="get*" propagation="SUPPORTS" />
+			<tx:method name="find*" propagation="SUPPORTS" />
+			<tx:method name="load*" propagation="SUPPORTS" />
+			<tx:method name="search*" propagation="SUPPORTS" />
+
+			<tx:method name="*" propagation="SUPPORTS" />
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:pointcut id="transactionPointcut" expression="execution(* com.sofency.ticket.service.impl.*Impl.*(..))" />
+		<aop:advisor pointcut-ref="transactionPointcut"
+					 advice-ref="transactionAdvice" />
+	</aop:config>
+	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
 </beans>

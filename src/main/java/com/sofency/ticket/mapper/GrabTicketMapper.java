@@ -110,8 +110,8 @@ public interface GrabTicketMapper {
 
     /**
      * 票数减1
-     * @param grabId
+     * @param grapId
      * @return
      */
-    int decrTicket(int grabId);
+    int decrTicket(int grapId);
 }

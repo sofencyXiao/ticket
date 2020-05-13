@@ -5,7 +5,7 @@ import com.sofency.ticket.enums.Code;
 import com.sofency.ticket.mapper.ActorMapper;
 import com.sofency.ticket.pojo.Actor;
 import com.sofency.ticket.pojo.ActorExample;
-import com.sofency.ticket.service.VoteTicketService;
+import com.sofency.ticket.service.impl.VoteTicketServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,10 +22,10 @@ import java.util.List;
  */
 @RestController
 public class VoteController {
-    private VoteTicketService voteTicketService;
+    private VoteTicketServiceImpl voteTicketService;
     private ActorMapper actorMapper;
     @Autowired
-    public VoteController(VoteTicketService voteTicketService,
+    public VoteController(VoteTicketServiceImpl voteTicketService,
                           ActorMapper actorMapper) {
         this.voteTicketService = voteTicketService;
         this.actorMapper = actorMapper;

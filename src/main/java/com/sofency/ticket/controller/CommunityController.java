@@ -5,8 +5,6 @@ import com.sofency.ticket.dto.ResultMsg;
 import com.sofency.ticket.dto.WapActivityInfoDTO;
 import com.sofency.ticket.enums.Code;
 import com.sofency.ticket.exception.UnKnowException;
-import com.sofency.ticket.mapper.GrabTicketMapper;
-import com.sofency.ticket.mapper.VoteTicketMapper;
 import com.sofency.ticket.pojo.*;
 import com.sofency.ticket.service.CommunityService;
 import org.springframework.beans.factory.annotation.Autowired;

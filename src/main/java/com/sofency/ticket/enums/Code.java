@@ -27,7 +27,7 @@ public enum  Code {
     REGISTER_FAIL(404,"注册失败"),
     HAS_BUY(404,"已经购买过"),
     CAN_BUY(200,"可以购买"),
-    CAN_NOT_BUY(404,"可以购买"),
+    CAN_NOT_BUY(404,"不可以购买"),
     CHANGE_SUCCESS(200,"修改成功"),
     CHANGE_FAIL(404,"修改失败");
     private int code;

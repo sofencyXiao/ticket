@@ -8,9 +8,9 @@ import com.sofency.ticket.pojo.Community;
 import com.sofency.ticket.pojo.GrabTicket;
 import com.sofency.ticket.pojo.Student;
 import com.sofency.ticket.service.CommunityService;
-import com.sofency.ticket.service.GrabTicketService;
-import com.sofency.ticket.service.StudentService;
-import com.sofency.ticket.service.TicketService;
+import com.sofency.ticket.service.impl.GrabTicketServiceImpl;
+import com.sofency.ticket.service.impl.StudentServiceImpl;
+import com.sofency.ticket.service.impl.TicketServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,14 +28,14 @@ import java.util.List;
 @ResponseBody  //表明返回值就是json
 @Controller  //表明控制类
 public class StudentController {
-    StudentService studentService;
-    TicketService ticketService;
+    StudentServiceImpl studentService;
+    TicketServiceImpl ticketService;
     CommunityService communityService;
-    GrabTicketService grabTicketService;
+    GrabTicketServiceImpl grabTicketService;
     @Autowired
-    public StudentController(StudentService studentService, TicketService ticketService,
+    public StudentController(StudentServiceImpl studentService, TicketServiceImpl ticketService,
                              CommunityService communityService,
-                             GrabTicketService grabTicketService) {
+                             GrabTicketServiceImpl grabTicketService) {
 
         this.studentService = studentService;
         this.ticketService = ticketService;

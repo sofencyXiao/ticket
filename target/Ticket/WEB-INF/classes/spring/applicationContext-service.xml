@@ -8,11 +8,11 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
         
         <!-- 配置service接口 -->
-	<bean id="communityService" class="com.sofency.ticket.service.CommunityService"></bean>
-	<bean id="grabTicketService" class="com.sofency.ticket.service.GrabTicketService"></bean>
-	<bean id="voteTicketService" class="com.sofency.ticket.service.VoteTicketService"></bean>
-	<bean id="ticketService" class="com.sofency.ticket.service.TicketService"></bean>
-	<bean id="studentService" class="com.sofency.ticket.service.StudentService"></bean>
+	<bean id="communityService" class="com.sofency.ticket.service.impl.CommunityServiceImpl"></bean>
+	<bean id="grabTicketService" class="com.sofency.ticket.service.impl.GrabTicketServiceImpl"></bean>
+	<bean id="voteTicketService" class="com.sofency.ticket.service.impl.VoteTicketServiceImpl"></bean>
+	<bean id="ticketService" class="com.sofency.ticket.service.impl.TicketServiceImpl"></bean>
+	<bean id="studentService" class="com.sofency.ticket.service.impl.StudentServiceImpl"></bean>
 
 
 	<context:property-placeholder ignore-unresolvable="true" location="classpath:redis.properties" />
